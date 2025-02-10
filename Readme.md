@@ -65,10 +65,10 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | update password      | Updated password                 | to be Do  |
 | update email         | Updated email                    | to be Do  |
 
-### 2. Manager
+### 3. Songs
 ![Songs](img/songs.jpg)
 
-#### Songs
+#### Song
 
 | Feature           | Description                         | Status    |
 |-------------------|-------------------------------------|-----------|
