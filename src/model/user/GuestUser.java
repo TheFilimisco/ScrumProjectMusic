@@ -1,4 +1,7 @@
 package model.user;
 
-public class GuestUser {
+public class GuestUser extends User{
+    public GuestUser() {
+        super();
+    }
 }
