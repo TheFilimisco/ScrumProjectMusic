@@ -20,12 +20,16 @@ public class Authentication {
     }
 
     public User login(User user){
-        if (user instanceof MemberUser){
+//        if (user instanceof MemberUser){
 //            return new MemberUser();
-        } else if (user instanceof  AdminUser) {
+//        } else if (user instanceof  AdminUser) {
 //            return new AdminUser();
-        }
-        return new User();
+//        }
+//        return new User();
+
+        return users.get(user.getId());
+// Lia - lo comentado de arriba devuelve instancias y puede devolver obj vacío
+// Lia - Por eso lo he sustituyo por get q es más facil
     }
 
     private boolean validation(User user){
@@ -33,6 +37,8 @@ public class Authentication {
             return false;
         } else if (!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", user.getEmail())) {
             return false;
+
+// Lia- en getpassword no debería ser !Pattern? Pq le estamos dando acceso cuando no deberimos, verdad?
         } else if (Pattern.matches("^(?=.*\\d)(?=.*[A-Z])[A-Za-z\\d]{8}$", user.getPassword())) {
             return false;
         } else if (user.getNickName() == null){
@@ -47,7 +53,7 @@ public class Authentication {
         while (running) {
             newUser.setLength(0);
             boolean exist = false;
-            newUser.append(user.getName()).append((( int) (Math.random() * user.getDateOfBirth().getYear())));
+            newUser.append(user.getName()).append(((int) (Math.random() * user.getDateOfBirth().getYear())));
             for (User us: users.values()){
                 if ((us.getNickName().contentEquals(newUser.toString()))) {
                     exist = true;
