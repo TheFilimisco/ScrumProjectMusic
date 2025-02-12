@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
-    private Integer id;
-    private String name;
-    private LocalDate dateOfBirth;
-    private String email;
-    private String password;
-    private String identificationNumber;
-    private String nickName;
-    private static Integer counterUser = 1;
+    protected Integer id;
+    protected String name;
+    protected LocalDate dateOfBirth;
+    protected String email;
+    protected String password;
+    protected String identificationNumber;
+    protected String nickName;
+    protected static Integer counterUser = 1;
 
 
     public User(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
@@ -94,6 +94,12 @@ public class User {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    public String accessPlatform(){
+        return "User";
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
