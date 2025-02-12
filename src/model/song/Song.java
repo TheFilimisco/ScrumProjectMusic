@@ -4,9 +4,9 @@ public class Song {
     private String title;
     private Artist artist;
     private Genre genre;
-    private double duration;
+    private int duration;
 
-    public Song(String title, Artist artist, Genre genre, double duration) {
+    public Song(String title, Artist artist, Genre genre, int duration) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -41,7 +41,7 @@ public class Song {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
