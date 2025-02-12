@@ -17,7 +17,7 @@ public class UI {
         this.auth = auth;
     }
 
-    public void addNewUser(Scanner input){
+    public void addNewUser(){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
 
@@ -40,7 +40,6 @@ public class UI {
         String nickname = sc.next();
 
         User newUser;
-
         if (userType.equals("admin")) {
             newUser = new AdminUser(name, dateOfBirth, email, password, dni, nickname);
         } else {
@@ -55,12 +54,13 @@ public class UI {
         }
     }
 
-    public User loginInput(Scanner input){
+    public User loginInput(){
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter nickname: ");
-        String nickname = input.next();
+        String nickname = sc.next();
 
         System.out.print("Enter password: ");
-        String password = input.next();
+        String password = sc.next();
 
         try {
             User user = auth.login(nickname, password);
@@ -88,11 +88,17 @@ public class UI {
 
             switch (choice) {
                 case 1:
-                    ui.addNewUser(sc);
+                    ui.addNewUser();
+                    break;
                 case 2:
-                    ui.loginInput(sc);
+                    ui.loginInput();
+                    break;
                 case 3:
+                    System.out.println("Goodbye!");
                     loop = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again");
             }
         }
     }
