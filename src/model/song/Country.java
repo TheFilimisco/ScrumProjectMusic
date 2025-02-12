@@ -140,6 +140,7 @@ public enum Country{
     PERU,
     POLAND,
     PORTUGAL,
+    PUERTO_RICO,
     ROMANIA,
     RUSSIA,
     RWANDA,
