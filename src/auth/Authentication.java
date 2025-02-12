@@ -68,8 +68,9 @@ public class Authentication {
     }
 
     public static void main(String[] args) {
-        /*        Authentication auth = new Authentication();
-         *//*        //Email Fail
+        /*
+    }       Authentication auth = new Authentication();
+        //Email Fail
         auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123dominio.com", "Pass1234","12345678L"));
         System.out.println(auth.users);
         //Password Fail
@@ -77,7 +78,7 @@ public class Authentication {
         System.out.println(auth.users);
         //DNI fail
         auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123@dominio.com", "Pass1234","12345678l"));
-        System.out.println(auth.users);*//*
+        System.out.println(auth.users);
 
         //Correct Register
         User dummy = new MemberUser("Steven", LocalDate.now(),"nystepro@gmail.com", "Pass1234","12345678L");
@@ -89,7 +90,7 @@ public class Authentication {
 
         //Correct Login
         System.out.println(auth.login(dummy.getNickName(), "Pass1234"));
-
-    */
+*/
     }
+
 }
