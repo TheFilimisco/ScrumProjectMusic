@@ -4,6 +4,7 @@ import model.user.AdminUser;
 import model.user.MemberUser;
 import model.user.User;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -16,32 +17,31 @@ public class Authentication {
     }
 
     public void register(User user){
-        users.put(user.getId(), user);
+        if (validation(user)){
+            users.put(user.getId(),user);
+            return;
+        }
+        throw new IllegalStateException("DNI, email or Password, invalid!");
     }
 
-    public User login(User user){
-//        if (user instanceof MemberUser){
-//            return new MemberUser();
-//        } else if (user instanceof  AdminUser) {
-//            return new AdminUser();
-//        }
-//        return new User();
-
-        return users.get(user.getId());
-// Lia - lo comentado de arriba devuelve instancias y puede devolver obj vacío
-// Lia - Por eso lo he sustituyo por get q es más facil
+    public User login(String nickName, String password){
+        for (User us: users.values()){
+            if (us.getNickName().equals(nickName) && us.getPassword().equals(password)){
+                return us;
+            }
+        }
+        throw new IllegalStateException("NickName or Password, invalid!");
     }
+
 
     private boolean validation(User user){
         if (!Pattern.matches("\\d{8}[A-Z]", user.getIdentificationNumber())){
             return false;
         } else if (!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", user.getEmail())) {
             return false;
-
-// Lia- en getpassword no debería ser !Pattern? Pq le estamos dando acceso cuando no deberimos, verdad?
-        } else if (Pattern.matches("^(?=.*\\d)(?=.*[A-Z])[A-Za-z\\d]{8}$", user.getPassword())) {
+        } else if (!Pattern.matches("^(?=.*\\d)(?=.*[A-Z])[A-Za-z\\d]{8}$", user.getPassword())) {
             return false;
-        } else if (user.getNickName() == null){
+        } else if (user.getNickName().isEmpty()){
             user.setNickName(generateNickName(user));
         }
         return true;
@@ -68,13 +68,28 @@ public class Authentication {
     }
 
     public static void main(String[] args) {
-//        var user = new User();
-//        user.setName("Steven");
-//        user.setIdentificationNumber("54910978L");
-//        System.out.println(user.getId());
-//        Authentication auth = new Authentication();
-//        System.out.println(auth.generateNickName(user));
+        /*        Authentication auth = new Authentication();
+         *//*        //Email Fail
+        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123dominio.com", "Pass1234","12345678L"));
+        System.out.println(auth.users);
+        //Password Fail
+        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123@dominio.com", "Pass1234asdasd","12345678L"));
+        System.out.println(auth.users);
+        //DNI fail
+        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123@dominio.com", "Pass1234","12345678l"));
+        System.out.println(auth.users);*//*
+
+        //Correct Register
+        User dummy = new MemberUser("Steven", LocalDate.now(),"nystepro@gmail.com", "Pass1234","12345678L");
+        auth.register(dummy);
+        System.out.println(auth.users);
+
+        //Invalid Login
+//        auth.login(dummy.getNickName(), "Pass1234asdasdsa");
+
+        //Correct Login
+        System.out.println(auth.login(dummy.getNickName(), "Pass1234"));
+
+    */
     }
-
-
 }

@@ -6,4 +6,8 @@ public class MemberUser extends User{
     public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
     }
+
+    public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber) {
+        super(name, dateOfBirth, email, password, identificationNumber);
+    }
 }

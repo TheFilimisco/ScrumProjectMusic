@@ -11,19 +11,19 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### Auth
 
-| Feature           | Description                      | Status    |
-|-------------------|----------------------------------|-----------|
-| Register          | Method void register (User user) | to be Do  |
-| Login             | Method User login                | to be Do  |
-| Generate Nickname | Generate random nickname         | to be Do  |
+| Feature           | Description                      | Status |
+|-------------------|----------------------------------|--------|
+| Register          | Method void register (User user) | Doing  |
+| Login             | Method User login                | Doing  |
+| Generate Nickname | Generate random nickname         | Done   |
 
 #### User
 
-| Feature       | Description                                              | Status    |
-|---------------|----------------------------------------------------------|-----------|
-| Guest_User    | Guest user access to Manager System                      | to be Do  |
-| Admin_User    | Admin user access to Administrator Manager System        | to be Do  |
-| Member_User   | Access to Manager System, but will have not manipulating | to be Do  |
+| Feature       | Description                                              | Status |
+|---------------|----------------------------------------------------------|--------|
+| Guest_User    | Guest user access to Manager System                      | Doing  |
+| Admin_User    | Admin user access to Administrator Manager System        | Doing  |
+| Member_User   | Access to Manager System, but will have not manipulating | Doing  |
 
 
 ### 2. Manager
