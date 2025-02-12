@@ -16,8 +16,6 @@ public class UI {
 //    public UI(Authentication auth) {
 //        this.auth = auth;
 //    }
-
-
     public void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
@@ -54,8 +52,7 @@ public class UI {
         }
     }
 
-    public User loginInput(){
-        Scanner sc = new Scanner(System.in);
+    public User loginInput(Scanner sc,Authentication auth){
         System.out.print("Enter nickname: ");
         String nickname = sc.next();
 
@@ -76,7 +73,7 @@ public class UI {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Authentication auth = new Authentication();
-        UI ui = new UI(auth);
+        UI ui = new UI();
 
         boolean loop = true;
         while (loop) {
@@ -88,10 +85,10 @@ public class UI {
 
             switch (choice) {
                 case 1:
-                    ui.addNewUser();
+                    ui.addNewUser(sc,auth);
                     break;
                 case 2:
-                    ui.loginInput();
+                    ui.loginInput(sc,auth);
                     break;
                 case 3:
                     System.out.println("Goodbye!");
