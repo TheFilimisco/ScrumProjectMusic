@@ -10,14 +10,15 @@ import model.user.AdminUser;
 import java.time.LocalDate;
 
 public class UI {
-    private Authentication auth;
-    Scanner sc = new Scanner(System.in);
+//    private Authentication auth;
+//    Scanner sc = new Scanner(System.in);
+//
+//    public UI(Authentication auth) {
+//        this.auth = auth;
+//    }
 
-    public UI(Authentication auth) {
-        this.auth = auth;
-    }
 
-    public void addNewUser(){
+    public void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
 
@@ -45,7 +46,6 @@ public class UI {
         } else {
             newUser = new MemberUser(name, dateOfBirth, email, password, dni, nickname);
         }
-
         try {
             auth.register(newUser);
             System.out.println("User registered");
