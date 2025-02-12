@@ -40,18 +40,20 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### MusicManager
 
-| Feature                | Description                            | Status    |
-|------------------------|----------------------------------------|-----------|
-| Access Admin Interface | Access member user to yourself profile | to be Do  |
-| Play Song              | Play song                              | to be Do  |
-| Pause Song             | Pause song                             | to be Do  |
-| Next Song              | Next song                              | to be Do  |
-| Previous Song          | Previous song                          | to be Do  |
-| Search Song by Title   | Search by Title and return a Song      | to be Do  |
-| Search By Genre        | Search by Genre and return a Songs     | to be Do  |
-| Search By Artist       | Search by Artist and return a Songs    | to be Do  |
-| Search By Release      | Search by Release and return a Songs   | to be Do  |
-| Real Time Search       | Search by different parameters         | to be Do  |
+| Feature                | Description                                | Status    |
+|------------------------|--------------------------------------------|-----------|
+| Access Admin Interface | Access member user to yourself profile     | to be Do  |
+| Validate Song          | Validate song                              | Done      |
+| Play Song              | Play song                                  | Done      |
+| Pause Song             | Pause song                                 | Done      |
+| Resume Song            | Resume song                                | Done      |
+| Next Song              | Next song                                  | Done      |
+| Previous Song          | Previous song                              | Done      |
+| Search Song by Title   | Search by Title and return a Song          | Done      |
+| Shows Songs By Genre   | Search by Genre and return a list of songs | Done      |
+| Search By Artist       | Search by Artist and return a Songs        | Done      |
+| Search By Release      | Search by Release and return a Songs       | to be Do  |
+| Real Time Search       | Search by different parameters             | to be Do  |
 
 #### InterfaceMusicManager
 
