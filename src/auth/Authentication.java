@@ -12,6 +12,10 @@ import java.util.regex.Pattern;
 public class Authentication {
     private HashMap<Integer,User> users;
 
+    public HashMap<Integer, User> getUsers() {
+        return users;
+    }
+
     public Authentication() {
         users = new HashMap<Integer,User>();
     }
@@ -65,6 +69,14 @@ public class Authentication {
             }
         }
         return newUser.toString();
+    }
+
+    public boolean isMember(Integer id){
+        User user = users.get(id);
+        if (user.getEmail().matches("Member")){
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {

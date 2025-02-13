@@ -12,6 +12,7 @@ public class User {
     protected String identificationNumber;
     protected String nickName;
     protected static Integer counterUser = 1;
+    public String type;
 
 
     public User(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
@@ -79,6 +80,8 @@ public class User {
         this.password = password;
     }
 
+    public String getType() {return type;}
+
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
     }
@@ -98,8 +101,6 @@ public class User {
     public String accessPlatform(){
         return "User";
     }
-
-
 
     @Override
     public boolean equals(Object o) {

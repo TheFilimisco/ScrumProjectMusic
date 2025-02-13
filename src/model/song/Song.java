@@ -5,12 +5,14 @@ public class Song {
     private Artist artist;
     private Genre genre;
     private double duration;
+    private int playCount;
 
     public Song(String title, Artist artist, Genre genre, double duration) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
         this.duration = duration;
+        this.playCount = 0;
     }
 
     public String getTitle() {
@@ -44,6 +46,8 @@ public class Song {
     public void setDuration(double duration) {
         this.duration = duration;
     }
+
+    public int getPlayCount() {return playCount;}
 
     @Override
     public String toString() {

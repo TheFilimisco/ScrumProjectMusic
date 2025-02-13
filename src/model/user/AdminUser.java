@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class AdminUser extends User{
-
+    protected String type = "Admin";
     public AdminUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
     }

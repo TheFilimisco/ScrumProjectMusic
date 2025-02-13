@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MemberUser extends User{
 //    private HashMap<Integer,Song> songsUser;
-
+        protected String type = "Member";
 
     public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
