@@ -10,12 +10,7 @@ import model.user.AdminUser;
 import java.time.LocalDate;
 
 public class UI {
-//    private Authentication auth;
-//    Scanner sc = new Scanner(System.in);
-//
-//    public UI(Authentication auth) {
-//        this.auth = auth;
-//    }
+
     public void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
@@ -38,6 +33,9 @@ public class UI {
         System.out.println("Enter nickname: ");
         String nickname = sc.next();
 
+//        if (nickname.isEmpty()) {
+//        }
+
         User newUser;
         if (userType.equals("admin")) {
             newUser = new AdminUser(name, dateOfBirth, email, password, dni, nickname);
@@ -52,7 +50,8 @@ public class UI {
         }
     }
 
-    public User loginInput(Scanner sc,Authentication auth){
+//Lia - me falta añadir anonimous
+    public User loginInput(Scanner sc, Authentication auth){
         System.out.print("Enter nickname: ");
         String nickname = sc.next();
 
