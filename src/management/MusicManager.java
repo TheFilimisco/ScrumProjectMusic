@@ -75,7 +75,6 @@ public class MusicManager {
         } else {
             currentSongIndex++;
         }
-
         Song nextSong = DataSongs.getInstance().getDataSongs().get(currentSongIndex);
         playSong(nextSong);
     }
@@ -86,7 +85,6 @@ public class MusicManager {
         } else {
             currentSongIndex--;
         }
-
         Song previousSong = DataSongs.getInstance().getDataSongs().get(currentSongIndex);
         playSong(previousSong);
     }

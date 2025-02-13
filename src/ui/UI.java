@@ -3,6 +3,7 @@ package ui;
 import auth.Authentication;
 import java.util.Scanner;
 
+import management.MusicManager;
 import model.user.GuestUser;
 import model.user.User;
 import model.user.MemberUser;
@@ -19,6 +20,7 @@ public class UI {
                 3. Access App (Guest User)
                 4. Leave
                 """);
+        System.out.print("Select your option: ");
     }
     public void secondMenu(){
         System.out.println("""
@@ -30,6 +32,7 @@ public class UI {
                 6. Real-Time Song Search
                 7. Back
                 """);
+        System.out.print("Select your option: ");
     }
 
     public void songMenu(){
@@ -41,9 +44,8 @@ public class UI {
                 4.Previous song
                 5. Back
                 """);
+        System.out.print("Select your option: ");
     }
-
-
 
     public void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
@@ -117,6 +119,32 @@ public class UI {
                     System.out.println("Invalid option. Try again");
             }
         }
+    }
+
+
+    public void secondLevel(Scanner sc, MusicManager musicManager, User user){
+        boolean loop = true;
+        while (loop) {
+            secondMenu();
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Acceding...");
+                    break;
+                case 2:
+                    System.out.println("===========Search Song By Title=============");
+                    System.out.println("Put your title: ");
+                    var putTitleSong = sc.nextLine();
+                    musicManager.searchSongByTitle(putTitleSong);
+                    break;
+                case 3:
+                    System.out.println("Close...");
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again");
+            }
+        }
+
     }
 
 
