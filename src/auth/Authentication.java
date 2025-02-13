@@ -73,7 +73,7 @@ public class Authentication {
 
     public boolean isMember(Integer id){
         User user = users.get(id);
-        if (user.getEmail().matches("Member")){
+        if (user.getType().matches("Member")){
             return true;
         }
         return false;

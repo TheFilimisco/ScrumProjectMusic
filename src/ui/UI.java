@@ -96,11 +96,6 @@ public class UI {
                     loop = false;
                     break;
                 case 4:
-                    if (!auth.isMember(sc.nextInt())){
-                        sc.nextLine();
-                        System.out.println("You cannot enter this section, you must have a registered account.");
-                    }
-                    else {
                     System.out.println("Welcome to the Music Manager. Please choose an option:");
                     while (loop) {
                         System.out.println("1. Show Profile");
@@ -118,9 +113,6 @@ public class UI {
                         }
                     }
                     }
-                default:
-                    System.out.println("Invalid option. Try again");
                     }
         }
     }
-}
