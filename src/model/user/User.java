@@ -12,8 +12,6 @@ public class User {
     protected String identificationNumber;
     protected String nickName;
     protected static Integer counterUser = 1;
-    public String type;
-
 
     public User(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         id = counterUser++;
