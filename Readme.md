@@ -27,7 +27,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 
 ### 2. Manager
-![Manager](img/manager.png)
+![Manager](img/manager.jpg)
 
 #### AdminManager
 
