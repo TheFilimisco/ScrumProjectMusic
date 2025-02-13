@@ -78,8 +78,6 @@ public class User {
         this.password = password;
     }
 
-    public String getType() {return type;}
-
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
     }
