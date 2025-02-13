@@ -2,7 +2,7 @@ package ui;
 
 import auth.Authentication;
 import java.util.Scanner;
-
+import management.MusicManager;
 import model.user.User;
 import model.user.MemberUser;
 import model.user.AdminUser;
@@ -73,6 +73,7 @@ public class UI {
         Scanner sc = new Scanner(System.in);
         Authentication auth = new Authentication();
         UI ui = new UI();
+        MusicManager manager = new MusicManager();
 
         boolean loop = true;
         while (loop) {
@@ -80,6 +81,7 @@ public class UI {
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Exit");
+            System.out.println("4. Music Manager");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -93,9 +95,32 @@ public class UI {
                     System.out.println("Goodbye!");
                     loop = false;
                     break;
+                case 4:
+                    if (!auth.isMember(sc.nextInt())){
+                        sc.nextLine();
+                        System.out.println("You cannot enter this section, you must have a registered account.");
+                    }
+                    else {
+                    System.out.println("Welcome to the Music Manager. Please choose an option:");
+                    while (loop) {
+                        System.out.println("1. Show Profile");
+                        System.out.println("2. Show Top 10 Songs");
+                        System.out.println("3. Show Top 3 Genres");
+                        System.out.println("4. Show Top Artist");
+                        System.out.println("5. Update Nickname");
+                        System.out.println("6. Update Email");
+                        System.out.println("7. Update Password");
+                        System.out.println("8. Exit");
+
+                        switch(choice){
+                            case 1:
+                                manager.showProfile();
+                        }
+                    }
+                    }
                 default:
                     System.out.println("Invalid option. Try again");
-            }
+                    }
         }
     }
 }
