@@ -195,9 +195,6 @@ public class MusicManager {
 //            }
 //        }
 
-
-//
-
 //        testAlbum.addSong(testSong);
 //        testAlbum2.addSong(testSong2);
 //        testAlbum2.addSong(testSong3);
