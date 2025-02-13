@@ -1,16 +1,15 @@
 package model.song;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Artist {
     private String name;
     private Country country;
-    private ArrayList<Album> albums;
 
     public Artist(String name, Country country) {
         this.name = name;
         this.country = country;
-        this.albums = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,12 +28,17 @@ public class Artist {
         this.country = country;
     }
 
-    public ArrayList<Album> getAlbums() {
-        return albums;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(name, artist.name) && country == artist.country;
     }
 
-    public void setAlbums(ArrayList<Album> albums) {
-        this.albums = albums;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, country);
     }
 
     @Override
@@ -42,7 +46,6 @@ public class Artist {
         return "Artist{" +
                 "name='" + name + '\'' +
                 ", country=" + country +
-                ", albums=" + albums +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package model.song;
 
+import java.util.Objects;
+
 public class Genre {
     private String name;
     private String description;
@@ -34,6 +36,19 @@ public class Genre {
 
     public void setOrigin(String origin) {
         this.origin = origin;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(name, genre.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     @Override
