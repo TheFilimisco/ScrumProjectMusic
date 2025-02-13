@@ -27,7 +27,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 
 ### 2. Manager
-![Manager](img/manager.jpg)
+![Manager](img/manager.png)
 
 #### AdminManager
 
@@ -40,20 +40,20 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### MusicManager
 
-| Feature                | Description                                | Status    |
-|------------------------|--------------------------------------------|-----------|
-| Access Admin Interface | Access member user to yourself profile     | to be Do  |
-| Validate Song          | Validate song                              | Done      |
-| Play Song              | Play song                                  | Done      |
-| Pause Song             | Pause song                                 | Done      |
-| Resume Song            | Resume song                                | Done      |
-| Next Song              | Next song                                  | Done      |
-| Previous Song          | Previous song                              | Done      |
-| Search Song by Title   | Search by Title and return a Song          | Done      |
-| Shows Songs By Genre   | Search by Genre and return a list of songs | Done      |
-| Search By Artist       | Search by Artist and return a Songs        | Done      |
-| Search By Release      | Search by Release and return a Songs       | to be Do  |
-| Real Time Search       | Search by different parameters             | to be Do  |
+| Feature                | Description                                | Status   |
+|------------------------|--------------------------------------------|----------|
+| Access Admin Interface | Access member user to yourself profile     | to be Do |
+| Validate Song          | Validate song                              | Done     |
+| Play Song              | Play song                                  | Done     |
+| Pause Song             | Pause song                                 | Done     |
+| Resume Song            | Resume song                                | Done     |
+| Next Song              | Next song                                  | Done     |
+| Previous Song          | Previous song                              | Done     |
+| Search Song by Title   | Search by Title and return a Song          | Done     |
+| Shows Songs By Genre   | Search by Genre and return a list of songs | Done     |
+| Search By Artist       | Search by Artist and return a Songs        | Done     |
+| Search By Release      | Search by range date and return an Album   | Done     |
+| Real Time Search       | Search by different parameters             | to be Do |
 
 #### InterfaceMusicManager
 
