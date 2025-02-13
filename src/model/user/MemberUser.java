@@ -1,21 +1,20 @@
 package model.user;
 
+import management.UserHistory;
 import model.song.Song;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class MemberUser extends User{
-//    private HashMap<Integer,Song> songsUser;
-        protected String type = "Member";
+        private UserHistory history;
 
     public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
-    }
-
-    public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber) {
-        super(name, dateOfBirth, email, password, identificationNumber);
+        this.history = new UserHistory();
     }
 
     @Override
@@ -23,4 +22,7 @@ public class MemberUser extends User{
         return "member";
     }
 
+    public static void main(String[] args) {
+        MemberUser memberUser = new MemberUser("Steven", , "")
+    }
 }
