@@ -136,6 +136,7 @@ public class UI {
                     System.out.println("Put your title: ");
                     var putTitleSong = sc.nextLine();
                     musicManager.searchSongByTitle(putTitleSong);
+                    //Here would be Menu song
                     break;
                 case 3:
                     System.out.println("Close...");
