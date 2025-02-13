@@ -25,21 +25,21 @@ import java.util.Iterator;
 //        return memberUser;
 //    }
 //
-//    @Override
-//    public ArrayList<Song> showTopTenSongs() {
-//        ArrayList<Song> sortedSongs = new ArrayList<>(songs.values());
-//        sortedSongs.sort(Comparator.comparing(Song::getPlayCount).reversed());
-//        ArrayList<Song> topTenSongs = new ArrayList<>();
-//        Iterator<Song> songIterator = sortedSongs.iterator();
-//        int counter = 0;
 //
-//        while(counter < 10){
-//            Song song = songIterator.next();
-//            topTenSongs.add(song);
-//            counter++;
-//        }
-//        return topTenSongs;
-//    }
+    public ArrayList<Song> showTopTenSongs() {
+        ArrayList<Song> sortedSongs = new ArrayList<>(songs.values());
+        sortedSongs.sort(Comparator.comparing(Song::getPlayCount).reversed());
+        ArrayList<Song> topTenSongs = new ArrayList<>();
+        Iterator<Song> songIterator = sortedSongs.iterator();
+        int counter = 0;
+
+        while(counter < 10){
+            Song song = songIterator.next();
+            topTenSongs.add(song);
+            counter++;
+        }
+        return topTenSongs;
+    }
 //
 //    @Override
 //    public ArrayList<Genre> showTopThreeGenres() {
