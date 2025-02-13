@@ -23,6 +23,7 @@ public class User {
         this.identificationNumber = identificationNumber;
         this.nickName = nickName;
     }
+
     public User(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber) {
         id = counterUser++;
         this.name = name;
@@ -33,7 +34,7 @@ public class User {
         nickName = "";
     }
 
-    public User(){
+    public User() {
         id = 0;
         name = "";
         dateOfBirth = LocalDate.now();
@@ -95,10 +96,9 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String accessPlatform(){
+    public String accessPlatform() {
         return "User";
     }
-
 
 
     @Override

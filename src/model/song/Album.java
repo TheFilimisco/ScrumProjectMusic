@@ -2,6 +2,7 @@ package model.song;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Album {
     private String name;
@@ -11,7 +12,11 @@ public class Album {
     public Album(String name, LocalDate releaseDate) {
         this.name = name;
         this.releaseDate = releaseDate;
-        this.songs = new ArrayList<>();
+        songs = new ArrayList<>();
+    }
+
+    public void addSong(Song song){
+        songs.add(song);
     }
 
     public String getName() {
@@ -40,10 +45,10 @@ public class Album {
 
     @Override
     public String toString() {
-        return "Album{" +
-                "name='" + name + '\'' +
-                ", releaseDate=" + releaseDate +
-                ", songs=" + songs +
-                '}';
+        return "Album {" + "\n" +
+                "  Name: '" + name + '\'' + "\n" +
+                "  Release Date: " + releaseDate + "\n" +
+                "  Songs Count: " + (songs != null ? songs.size() : 0) + "\n" +
+                "}";
     }
 }

@@ -2,15 +2,25 @@ package model.song;
 
 public class Song {
     private String title;
+    private Album album;
     private Artist artist;
     private Genre genre;
     private int duration;
 
-    public Song(String title, Artist artist, Genre genre, int duration) {
+    public Song(String title, Album album, Artist artist, Genre genre, int duration) {
         this.title = title;
+        this.album = album;
         this.artist = artist;
         this.genre = genre;
         this.duration = duration;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public String getTitle() {
@@ -49,9 +59,11 @@ public class Song {
     public String toString() {
         return "Song{" +
                 "title='" + title + '\'' +
-                ", artist=" + artist +
-                ", genre=" + genre +
+                ", album=" + album.getName() +
+                ", artist=" + artist.getName() +
+                ", genre=" + genre.getName() +
                 ", duration=" + duration +
                 '}';
     }
+
 }

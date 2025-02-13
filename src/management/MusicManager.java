@@ -1,24 +1,30 @@
 package management;
 
-import model.song.Artist;
-import model.song.Genre;
-import model.song.Song;
+import model.song.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class MusicManager {
     private ArrayList<Song> songs;
+    private HashSet<Album> albums;
     private int currentSongIndex;
     private boolean isPaused;
 
     public MusicManager() {
         songs = new ArrayList<>();
+        albums = new HashSet<>();
         isPaused = false;
     }
 
-    //en cada manager lo vamos a hacer? no tiene sentido, quizas hacer un manager padre?
     public void addSong(Song song) {
         songs.add(song);
+    }
+
+    public void addAlbum(String name, LocalDate releaseDate) {
+        Album newAlbum = new Album(name, releaseDate);
+        albums.add(newAlbum);
     }
 
     private void validateSong(Song song) {
@@ -144,4 +150,90 @@ public class MusicManager {
         }
         return songsByArtist;
     }
+
+    public HashSet<Album> searchAlbumsByRangeDate(LocalDate startDate, LocalDate endDate) {
+        HashSet<Album> filteredAlbums = new HashSet<>();
+
+        for (Album album : albums) {
+            if (!album.getReleaseDate().isBefore(startDate) && !album.getReleaseDate().isAfter(endDate)) {
+                filteredAlbums.add(album);
+            }
+
+            if (filteredAlbums.isEmpty()) {
+                throw new IllegalStateException("No albums found in the specified date range.");
+            }
+
+        }
+        return filteredAlbums;
+    }
+
+    public static void main(String[] args) {
+        MusicManager manager = new MusicManager();
+
+        LocalDate startDate = LocalDate.of(2024, 1, 1);
+        LocalDate endDate = LocalDate.of(2025, 2, 13);
+
+        Album testAlbum = new Album("DeBÍ TiRAR MáS FOToS",LocalDate.of(2025, 2, 13));
+        Album testAlbum2 = new Album("Cuatro",LocalDate.of(2024,5,13));
+
+        Artist testArtist = new Artist("Bad Bunny", Country.PUERTO_RICO);
+        Artist testArtist2 = new Artist("Camilo", Country.COLOMBIA);
+
+        Genre testGenre = new Genre("Reggaeton","description","Puerto rico");
+        Song testSong = new Song("DtMF",testAlbum,testArtist,testGenre,6);
+        Song testSong2 = new Song("PLIS",testAlbum2,testArtist2,testGenre,8);
+        Song testSong3 = new Song("No se vale",testAlbum2,testArtist2,testGenre,8);
+
+
+        testAlbum.addSong(testSong);
+        testAlbum2.addSong(testSong2);
+        testAlbum2.addSong(testSong3);
+
+
+        manager.addSong(testSong);
+        manager.addSong(testSong2);
+        manager.addSong(testSong3);
+        manager.addAlbum(testAlbum.getName(),testAlbum.getReleaseDate());
+        manager.addAlbum(testAlbum2.getName(),testAlbum2.getReleaseDate());
+
+        //PLAY SONG
+        System.out.println("PLAY SONG: \n");
+        manager.playSong(testSong);
+
+        //PAUSE SONG
+        System.out.println("PAUSE SONG: \n");
+        manager.pauseSong(testSong,5);
+
+        //RESUME SONG
+        System.out.println("RESUME SONG: \n");
+        manager.resumeSong(testSong,5);
+
+        //NEXT SONG
+        System.out.println("PLAY NEXT SONG: \n");
+        manager.nextSong(testSong3);
+
+        //PREVIOUS SONG
+        System.out.println("PLAY PREVIOUS SONG: \n");
+        manager.previousSong(testSong2);
+
+        //SEARCH SONG BY TITTLE
+        System.out.println("SEARCH SONG BY TITTLE: \n");
+        System.out.println(manager.searchSongByTitle("plis") );
+
+        //SEARCH SONGS BY GENRE
+        System.out.println("SEARCH SONGS BY GENRE: \n");
+        System.out.println(manager.searchSongByGenre(testGenre));
+
+        //SEARCH SONG BY ARTIST
+        System.out.println("SEARCH SONG BY ARTIST \n");
+        System.out.println(manager.searchSongByArtist(testArtist));
+
+        //SEARCH ALBUMS BY RANGE DATE
+        System.out.println("SEARCH ALBUMS BY RANGE DATE \n");
+        System.out.println(manager.searchAlbumsByRangeDate(startDate,endDate));
+    }
+
 }
+
+
+
