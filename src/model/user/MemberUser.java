@@ -11,19 +11,10 @@ import java.util.List;
 
 public class MemberUser extends User{
         private UserHistory history;
-        private HashMap<Integer,Integer> counter;
 
     public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
         this.history = new UserHistory();
-    }
-
-    public HashMap<Integer, Integer> getCounter() {
-        return counter;
-    }
-
-    public void setCounter(HashMap<Integer, Integer> counter) {
-        this.counter = counter;
     }
 
     @Override
@@ -31,7 +22,7 @@ public class MemberUser extends User{
         return "member";
     }
 
-//    public static void main(String[] args) {
-//        MemberUser memberUser = new MemberUser("Steven", , "")
-//    }
+    public static void main(String[] args) {
+        MemberUser memberUser = new MemberUser("Steven", , "")
+    }
 }
