@@ -15,7 +15,7 @@ public class DataSongs {
     private HashSet<Genre> genres;
 
     public DataSongs() {
-        genres = new HashSet<Genre>();
+        genres = new HashSet<>();
         Genre rock = new Genre("Rock","Originated in the United States during the late 1940s and early 1950s");
         Genre reggaeton = new Genre("Reggaeton","Reggaeton is a modern style of popular music that originated in Panama during the late 1980s");
         Genre pop = new Genre("Pop", "Pop music is a genre of popular music that originated in its modern form during the mid-1950s in the United States and the United Kingdom.");
@@ -99,6 +99,18 @@ public class DataSongs {
         return dataSongs;
     }
 
+    public HashSet<Artist> getArtists() {
+        return artists;
+    }
+
+    public HashSet<Album> getAlbums() {
+        return albums;
+    }
+
+    public HashSet<Genre> getGenres() {
+        return genres;
+    }
+
     public void addSong(Song song) {
         dataSongs.put(song.getId(), song);
     }
@@ -114,9 +126,6 @@ public class DataSongs {
     public void showAllSongs(){
         for (Song song: dataSongs.values()){
             System.out.println(song);
-        }
-        for (Artist artist: artists){
-            System.out.println(artist);
         }
     }
 }

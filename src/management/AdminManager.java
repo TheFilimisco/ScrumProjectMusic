@@ -18,10 +18,6 @@ public class AdminManager {
 
     public void addSong(Song song) {
         DataSongs.getInstance().addSong(song);
-//        if (song != null) {
-////            DataSongs.getInstance().addSong(song);
-//        }
-//        throw  new IllegalStateException();
     }
 
     public void removeSong(int id){
@@ -31,7 +27,6 @@ public class AdminManager {
     public void showAllSongs() {
         DataSongs.getInstance().showAllSongs();
     }
-
 
 //
 //    public void addArtist(Artist artist) {
