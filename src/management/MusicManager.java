@@ -113,19 +113,19 @@ public class MusicManager {
         return songsByGenre;
     }
 
-    public ArrayList<Song> searchSongByArtist(Artist artist) {
-        ArrayList<Song> songsByArtist = new ArrayList<>();
-
-        for (Song song : DataSongs.getInstance().getDataSongs().values()) {
-            if (song.getArtist().equals(artist)) {
-                songsByArtist.add(song);
-            }
-        }
-        if (songsByArtist.isEmpty()) {
-            throw new IllegalStateException("No songs were found by the artist  " + artist.getName());
-        }
-        return songsByArtist;
-    }
+//    public ArrayList<Song> searchSongByArtist(Artist artist) {
+//        ArrayList<Song> songsByArtist = new ArrayList<>();
+//
+//        for (Song song : DataSongs.getInstance().getDataSongs().values()) {
+//            if (song.getArtist().equals(artist)) {
+//                songsByArtist.add(song);
+//            }
+//        }
+//        if (songsByArtist.isEmpty()) {
+//            throw new IllegalStateException("No songs were found by the artist  " + artist.getName());
+//        }
+//        return songsByArtist;
+//    }
 
     public HashSet<Album> searchAlbumsByRangeDate(LocalDate startDate, LocalDate endDate) {
         HashSet<Album> filteredAlbums = new HashSet<>();

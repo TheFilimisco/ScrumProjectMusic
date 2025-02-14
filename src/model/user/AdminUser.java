@@ -17,11 +17,11 @@ public class AdminUser extends User{
         return "admin";
     }
 
-    private void showAllUsers(List<User> users) {
-        System.out.println("All the users registered:");
-        for (User user : users) {
-            System.out.println(user.getNickName());
-        }
-    }
+//    private void showAllUsers(List<User> users) {
+//        System.out.println("All the users registered:");
+//        for (User user : users) {
+//            System.out.println(user.getNickName());
+//        }
+//    }
 
 }

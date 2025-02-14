@@ -7,37 +7,19 @@ public class Song {
     private String title;
     private Album album;
     private Genre genre;
-    private Artist artist;
     private int duration;
     private static int counterSong = 0;
 
-    public Song(String title, Album album, Genre genre, Artist artist, int duration) {
+    public Song(String title, Album album, Genre genre, int duration) {
         id = counterSong++;
         this.title = title;
         this.album = album;
         this.genre = genre;
-        this.artist = artist;
         this.duration = duration;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public Album getAlbum() {
-        return album;
-    }
-
-    public Artist getArtist() {
-        return artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
-
-    public void setAlbum(Album album) {
-        this.album = album;
     }
 
     public String getTitle() {
@@ -48,6 +30,14 @@ public class Song {
         this.title = title;
     }
 
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
     public Genre getGenre() {
         return genre;
     }
@@ -56,13 +46,14 @@ public class Song {
         this.genre = genre;
     }
 
-    public double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -82,9 +73,8 @@ public class Song {
         return "Song{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", album=" + album +
-                ", genre=" + genre +
-                ", artist=" + artist +
+                ", album=" + album.getName() +
+                ", genre=" + genre.getName() +
                 ", duration=" + duration +
                 '}';
     }

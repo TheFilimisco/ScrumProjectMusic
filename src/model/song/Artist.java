@@ -1,15 +1,19 @@
 package model.song;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 
 public class Artist {
     private String name;
     private Country country;
+    private List<Album> albums;
 
     public Artist(String name, Country country) {
         this.name = name;
         this.country = country;
+        albums = new ArrayList<>();
     }
 
     public String getName() {
@@ -26,6 +30,25 @@ public class Artist {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
+
+    public void addNewAlbum(Album album){
+        if (albums.isEmpty()){
+            albums.add(album);
+            return;
+        } else if (!albums.contains(album)) {
+            albums.add(album);
+            return;
+        }
+        throw new IllegalStateException("Album is Added: " + album.getName());
     }
 
     @Override
@@ -46,6 +69,7 @@ public class Artist {
         return "Artist{" +
                 "name='" + name + '\'' +
                 ", country=" + country +
+                ", albums=" + albums +
                 '}';
     }
 }

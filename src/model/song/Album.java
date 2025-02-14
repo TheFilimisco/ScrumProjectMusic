@@ -1,17 +1,20 @@
 package model.song;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 public class Album {
     private String name;
     private LocalDate releaseDate;
+    private Artist artist;
+    private List<Song> songs;
 
-    public Album(String name, LocalDate releaseDate) {
+    public Album(String name, LocalDate releaseDate, Artist artist) {
         this.name = name;
         this.releaseDate = releaseDate;
+        this.artist = artist;
+        songs = new ArrayList<Song>();
+
     }
 
     public String getName() {
@@ -30,6 +33,30 @@ public class Album {
         this.releaseDate = releaseDate;
     }
 
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    public void addSongToAlbum(Song song){
+        if (!songs.contains(song)){
+            songs.add(song);
+            return;
+        }
+        throw new IllegalStateException("This Song exist in this Album: " + song.getTitle());
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -46,9 +73,11 @@ public class Album {
 
     @Override
     public String toString() {
-        return "Album {" + "\n" +
-                "  Name: '" + name + '\'' + "\n" +
-                "  Release Date: " + releaseDate + "\n" +
-                "}";
+        return "Album{" +
+                "name='" + name + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", artist=" + artist.getName() +
+                '}';
     }
+
 }
