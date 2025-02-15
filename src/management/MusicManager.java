@@ -60,7 +60,6 @@ public class MusicManager {
         }
         output.append("Song ends.");
         System.out.println(output.toString());
-
     }
 
     public void pauseSong(Song song, int pauseAfter) {
@@ -235,3 +234,6 @@ public class MusicManager {
     }
 
 }
+
+
+

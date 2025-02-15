@@ -1,16 +1,19 @@
 package model.song;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 
 public class Artist {
     private String name;
     private Country country;
-    private ArrayList<Album> albums;
+    private List<Album> albums;
 
     public Artist(String name, Country country) {
         this.name = name;
         this.country = country;
-        this.albums = new ArrayList<>();
+        albums = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,12 +32,36 @@ public class Artist {
         this.country = country;
     }
 
-    public ArrayList<Album> getAlbums() {
+    public List<Album> getAlbums() {
         return albums;
     }
 
-    public void setAlbums(ArrayList<Album> albums) {
+    public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public void addNewAlbum(Album album){
+        if (albums.isEmpty()){
+            albums.add(album);
+            return;
+        } else if (!albums.contains(album)) {
+            albums.add(album);
+            return;
+        }
+        throw new IllegalStateException("Album is Added: " + album.getName());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(name, artist.name) && country == artist.country;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, country);
     }
 
     @Override

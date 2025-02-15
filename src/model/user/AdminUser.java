@@ -5,6 +5,9 @@ import java.util.List;
 
 public class AdminUser extends User{
 
+    public AdminUser() {
+    }
+
     public AdminUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
     }
@@ -14,11 +17,11 @@ public class AdminUser extends User{
         return "admin";
     }
 
-    private void showAllUsers(List<User> users) {
-        System.out.println("All the users registered:");
-        for (User user : users) {
-            System.out.println(user.getNickName());
-        }
-    }
+//    private void showAllUsers(List<User> users) {
+//        System.out.println("All the users registered:");
+//        for (User user : users) {
+//            System.out.println(user.getNickName());
+//        }
+//    }
 
 }
