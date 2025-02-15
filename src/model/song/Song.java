@@ -1,26 +1,25 @@
 package model.song;
 
+import java.util.Objects;
+
 public class Song {
+    private Integer id;
     private String title;
     private Album album;
-    private Artist artist;
     private Genre genre;
     private int duration;
+    private static int counterSong = 0;
 
-    public Song(String title, Album album, Artist artist, Genre genre, int duration) {
+    public Song(String title, Album album, Genre genre, int duration) {
+        id = counterSong++;
         this.title = title;
         this.album = album;
-        this.artist = artist;
         this.genre = genre;
         this.duration = duration;
     }
 
-    public Album getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Album album) {
-        this.album = album;
+    public Integer getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -31,12 +30,12 @@ public class Song {
         this.title = title;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public Genre getGenre() {
@@ -47,7 +46,7 @@ public class Song {
         this.genre = genre;
     }
 
-    public double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
@@ -55,15 +54,28 @@ public class Song {
         this.duration = duration;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return Objects.equals(id, song.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
     @Override
     public String toString() {
         return "Song{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", album=" + album.getName() +
-                ", artist=" + artist.getName() +
                 ", genre=" + genre.getName() +
                 ", duration=" + duration +
                 '}';
     }
-
 }

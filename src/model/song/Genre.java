@@ -1,15 +1,16 @@
 package model.song;
 
+import java.util.*;
+
 public class Genre {
     private String name;
     private String description;
-    private String origin;
+    private List<Song> songs;
 
-
-    public Genre(String name, String description, String origin) {
+    public Genre(String name, String description) {
         this.name = name;
         this.description = description;
-        this.origin = origin;
+        songs = new ArrayList<>();
     }
 
     public String getName() {
@@ -28,12 +29,33 @@ public class Genre {
         this.description = description;
     }
 
-    public String getOrigin() {
-        return origin;
+    public List<Song> getSongs() {
+        return songs;
     }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    public void addNewSong(Song song){
+        if (!songs.contains(song)){
+            songs.add(song);
+            return;
+        }
+        throw new IllegalStateException("This Song exist: " + song.getTitle());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(name, genre.name) && Objects.equals(description, genre.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description);
     }
 
     @Override
@@ -41,7 +63,6 @@ public class Genre {
         return "Genre{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", origin='" + origin + '\'' +
                 '}';
     }
 }

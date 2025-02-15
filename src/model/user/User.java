@@ -24,16 +24,6 @@ public class User {
         this.nickName = nickName;
     }
 
-    public User(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber) {
-        id = counterUser++;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.password = password;
-        this.identificationNumber = identificationNumber;
-        nickName = "";
-    }
-
     public User() {
         id = 0;
         name = "";
