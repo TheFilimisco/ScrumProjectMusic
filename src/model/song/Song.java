@@ -1,7 +1,6 @@
 package model.song;
 
 public class Song {
-    private Integer id;
     private String title;
     private Album album;
     private Artist artist;
