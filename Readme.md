@@ -57,15 +57,15 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### InterfaceMusicManager
 
-| Feature              | Description                      | Status    |
-|----------------------|----------------------------------|-----------|
-| Show Profile         | Show your Profile                | to be Do  |
-| Show Top Ten Song    | The top Ten Songs                | to be Do  |
-| Show Top three Genre | The Genres most heading for User | to be Do  |
-| Show Top Artist      | The Artist Most heading for User | to be Do  |
-| update nickname      | Updated nickname                 | to be Do  |
-| update password      | Updated password                 | to be Do  |
-| update email         | Updated email                    | to be Do  |
+| Feature              | Description                      | Status   |
+|----------------------|----------------------------------|----------|
+| Show Profile         | Show your Profile                | Done     |
+| Show Top Ten Song    | The top Ten Songs                | Done     |
+| Show Top three Genre | The Genres most heading for User | to be Do |
+| Show Top Artist      | The Artist Most heading for User | to be Do |
+| update nickname      | Updated nickname                 | Done     |
+| update password      | Updated password                 | Done     |
+| update email         | Updated email                    | Done     |
 
 ### 3. Songs
 ![Songs](img/songs.jpg)
