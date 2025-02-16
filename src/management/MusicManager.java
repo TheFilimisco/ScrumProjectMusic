@@ -6,6 +6,7 @@ import model.user.AdminUser;
 import model.user.GuestUser;
 import model.user.User;
 import model.user.memberuser.MemberUser;
+import model.user.memberuser.UserHistory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -147,6 +148,26 @@ public class MusicManager {
         return filteredAlbums;
     }
 
+    public void addCounter(Song song) {
+
+        int songId = song.getId();
+        songCounter.put(songId, songCounter.getOrDefault(songId, 0) + 1);
+
+        Album album = song.getAlbum();
+        if (album != null) {
+            albumCounter.put(album, albumCounter.getOrDefault(album, 0) + 1);
+        }
+
+        Artist artist = album != null ? album.getArtist() : null;
+        if (artist != null) {
+            artistCounter.put(artist, artistCounter.getOrDefault(artist, 0) + 1);
+        }
+
+        Genre genre = song.getGenre();
+        if (genre != null) {
+            genreCounter.put(genre, genreCounter.getOrDefault(genre, 0) + 1);
+        }
+    }
 /*    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         MusicManager manager = new MusicManager(new GuestUser());

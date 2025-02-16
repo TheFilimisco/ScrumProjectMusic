@@ -18,10 +18,10 @@ public class MemberProfileManager { ;
 
     public User showProfile(){return user;}
 
-    public ArrayList<Song> showTopTenSongs() {
-       List<Map.Entry<Song, Integer>> sortedList = new ArrayList<>(history.getSongCounter().entrySet());
-       sortedList.sort(Map.Entry.<Song,Integer>comparingByValue().reversed());
-       ArrayList<Song> top10 = new ArrayList<>();
+    public ArrayList<Integer> showTopTenSongs() {
+       List<Map.Entry<Integer, Integer>> sortedList = new ArrayList<>(history.getSongCounter().entrySet());
+       sortedList.sort(Map.Entry.<Integer,Integer>comparingByValue().reversed());
+       ArrayList<Integer> top10 = new ArrayList<>();
         for (int i = 0; i < Math.min(10, sortedList.size()); i++) {
             top10.add(sortedList.get(i).getKey());
         }
