@@ -16,6 +16,10 @@ public class AdminManager {
         this.adminUser = adminUser;
     }
 
+    public AdminManager(){
+
+    }
+
     public void addSong(Song song) {
         DataSongs.getInstance().addSong(song);
     }

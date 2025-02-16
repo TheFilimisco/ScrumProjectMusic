@@ -20,6 +20,10 @@ public class MusicManager {
         this.user = user;
     }
 
+    public MusicManager(){
+
+    }
+
     // If user is userMember can add new Counters
 
 

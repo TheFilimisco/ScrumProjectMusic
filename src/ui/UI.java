@@ -62,6 +62,7 @@ public class UI {
         System.out.print("Select your option: ");
     }
 
+    //Works
     public void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
@@ -75,7 +76,8 @@ public class UI {
         String password = sc.next();
         System.out.print("Enter DNI (8 numbers, 1 uppercase letter): ");
         String dni = sc.next();
-        System.out.println("Enter nickname: ");
+        sc.nextLine();
+        System.out.print("Enter nickname: ");
         String nickname = sc.nextLine();
         User newUser;
         if (userType.equals("admin")) {
@@ -111,6 +113,7 @@ public class UI {
         return new GuestUser();
     }
 
+    //Works
     public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager,AdminManager adminManager){
         boolean loop = true;
         while (loop) {
@@ -118,16 +121,20 @@ public class UI {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
+                    //Works!
                     addNewUser(sc,auth);
                     break;
                 case 2:
+                    //Works!!
                     User user = loginInput(sc,auth);
                     if ( user instanceof AdminUser){
                         adminMenu(sc,adminManager,user);
+                    } else if (user instanceof MemberUser) {
+                        secondLevel(sc,musicManager,user);
                     }
-                    secondLevel(sc,musicManager,loginInput(sc,auth));
                     break;
                 case 3:
+                    //Works!!
                     User userGuest = loginGuestInput();
                     secondLevel(sc,musicManager,userGuest);
                     break;
@@ -172,7 +179,6 @@ public class UI {
 
     }
 
-
     public void secondLevel(Scanner sc, MusicManager musicManager, User user){
         boolean loop = true;
         while (loop) {
@@ -205,6 +211,17 @@ public class UI {
                     System.out.println("Invalid option. Try again");
             }
         }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Authentication auth = new Authentication();
+        MusicManager manager = new MusicManager();
+        AdminManager adminManager = new AdminManager();
+
+        UI ui = new UI();
+        ui.mainLevel(sc,auth,manager,adminManager);
     }
 
 }
