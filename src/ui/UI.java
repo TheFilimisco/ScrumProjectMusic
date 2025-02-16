@@ -63,6 +63,7 @@ public class UI {
         System.out.print("Select your option: ");
     }
 
+
     //Works
     private void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");

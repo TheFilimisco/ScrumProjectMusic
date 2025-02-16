@@ -23,7 +23,6 @@ public class MusicManager {
     }
 
     public MusicManager(){
-
     }
 
 
@@ -170,6 +169,7 @@ public class MusicManager {
             genreCounter.put(genre, genreCounter.getOrDefault(genre, 0) + 1);
         }
     }
+
 /*    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         MusicManager manager = new MusicManager(new GuestUser());
