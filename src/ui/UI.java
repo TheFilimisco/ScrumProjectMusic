@@ -2,11 +2,9 @@ package ui;
 
 import auth.Authentication;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
+import data.DataSongs;
 import management.MemberProfileManager;
 import management.MusicManager;
 import management.AdminManager;
@@ -37,7 +35,7 @@ public class UI {
     }
 
 
-    private void secondMenu(){
+    private void secondMenu() {
         System.out.println("""
                 =========================== App ===============================
                 1. Access to Profile
@@ -52,7 +50,7 @@ public class UI {
         System.out.print("Select your option: ");
     }
 
-    private void songMenu(){
+    private void songMenu() {
         System.out.println("""
                 =========================Song Menu===============================
                 1. Play song
@@ -66,7 +64,7 @@ public class UI {
         System.out.print("Select your option: ");
     }
 
-    private void profileMenu(){
+    private void profileMenu() {
         System.out.println("""
                 =========================Profile Menu===============================
                 1. Show Top Songs
@@ -80,7 +78,7 @@ public class UI {
     }
 
 
-    private void adminMenu(){
+    private void adminMenu() {
         System.out.println("""
                 =============================Admin Manager Menu============================
                 1.Add song
@@ -95,7 +93,7 @@ public class UI {
 
 
     //Works
-    private void addNewUser(Scanner sc, Authentication auth){
+    private void addNewUser(Scanner sc, Authentication auth) {
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
         System.out.print("Enter name: ");
@@ -126,7 +124,7 @@ public class UI {
     }
 
 
-    private User loginInput(Scanner sc, Authentication auth){
+    private User loginInput(Scanner sc, Authentication auth) {
         System.out.print("Enter nickname: ");
         String nickname = sc.next();
         System.out.print("Enter password: ");
@@ -141,12 +139,12 @@ public class UI {
         }
     }
 
-    private User loginGuestInput(){
+    private User loginGuestInput() {
         return new GuestUser();
     }
 
     //Works
-    public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager, AdminManager adminManager){
+    public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager, AdminManager adminManager) {
         boolean loop = true;
         while (loop) {
             firstMenu();
@@ -154,21 +152,21 @@ public class UI {
             switch (choice) {
                 case 1:
                     //Works!
-                    addNewUser(sc,auth);
+                    addNewUser(sc, auth);
                     break;
                 case 2:
                     //Works!!
-                    User user = loginInput(sc,auth);
-                    if ( user instanceof AdminUser){
-                        adminMenu(sc,adminManager);
+                    User user = loginInput(sc, auth);
+                    if (user instanceof AdminUser) {
+                        adminMenu(sc, adminManager);
                     } else if (user instanceof MemberUser) {
-                        secondLevel(sc,musicManager,user);
+                        secondLevel(sc, musicManager, user);
                     }
                     break;
                 case 3:
                     //Works!!
                     User userGuest = loginGuestInput();
-                    secondLevel(sc,musicManager,userGuest);
+                    secondLevel(sc, musicManager, userGuest);
                     break;
                 case 4:
                     System.out.println("Goodbye!");
@@ -181,8 +179,7 @@ public class UI {
     }
 
 
-
-    private Song creatNewSong(Scanner sc, AdminManager adminManager){
+    private Song creatNewSong(Scanner sc, AdminManager adminManager) {
         sc.nextLine();
         System.out.print("Enter Title: ");
         var titleSong = sc.nextLine();
@@ -192,27 +189,27 @@ public class UI {
         var genreName = sc.nextLine();
         System.out.print("Enter Duration: ");
         var duration = sc.nextInt();
-        return new Song(titleSong,adminManager.getAlbumByName(albumName),adminManager.getGenreByName(genreName),duration);
+        return new Song(titleSong, adminManager.getAlbumByName(albumName), adminManager.getGenreByName(genreName), duration);
     }
 
-    private int enterId(Scanner sc){
+    private int enterId(Scanner sc) {
         System.out.println("Enter your Id: ");
         return sc.nextInt();
     }
 
-    private void adminMenu(Scanner sc, AdminManager adminManager){
+    private void adminMenu(Scanner sc, AdminManager adminManager) {
         boolean loop = true;
-        while (loop){
+        while (loop) {
             adminMenu();
             int choice = sc.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     System.out.println("============Add Song==============");
-                    adminManager.addSong(creatNewSong(sc,adminManager));
+                    adminManager.addSong(creatNewSong(sc, adminManager));
                     break;
                 case 2:
                     System.out.println("============Update Song==============");
-                    adminManager.updateSong(enterId(sc),creatNewSong(sc,adminManager));
+                    adminManager.updateSong(enterId(sc), creatNewSong(sc, adminManager));
                     break;
                 case 3:
                     sc.nextLine();
@@ -234,34 +231,77 @@ public class UI {
     }
 
 
-    private void secondLevel(Scanner sc, MusicManager musicManager, User user){
+    private void secondLevel(Scanner sc, MusicManager musicManager, User user) {
         musicManager.setUser(user);
         boolean loop = true;
         while (loop) {
             secondMenu();
             int choice = sc.nextInt();
+            sc.nextLine();
             switch (choice) {
                 case 1:
-                    sc.nextLine();
                     System.out.println("=================Access your Profile=============");
-                    profileLevel(sc,(MemberUser)user);
+                    profileLevel(sc, (MemberUser) user);
                     break;
                 case 2:
-                    sc.nextLine();
                     System.out.println("=================Search Song By Title=============");
                     System.out.print("Enter Title:");
                     var inputTitle = sc.nextLine();
                     var song = musicManager.searchSongByTitle(inputTitle);
-                    songLevel(sc,musicManager,song);
+                    songLevel(sc, musicManager, song);
                     break;
                 case 3:
-                    System.out.println("=================Search Song By Genre=============");
+                    System.out.println("=================Search Songs By Genre=============");
+                    System.out.print("Enter Genre: ");
+                    var inputGenre = sc.nextLine();
+
+                    Genre genre = DataSongs.getInstance().getGenreByName(inputGenre);
+                    ArrayList<Song> songs = musicManager.searchSongByGenre(genre);
+
+                    if (songs.isEmpty()) {
+                        System.out.println("No songs found in the genre: " + inputGenre);
+                    } else {
+                        System.out.println("Songs in the genre " + inputGenre + ":");
+                        for (Song actualSong : songs) {
+                            System.out.println("- " + actualSong.getTitle());
+                        }
+                    }
                     break;
+
                 case 4:
-                    System.out.println("=================Search Song By Artist=============");
+                    System.out.println("=================Search Songs By Artist=============");
+                    System.out.print("Enter Artist: ");
+                    var inputArtist = sc.nextLine().trim();
+
+                    ArrayList<Song> songsByArtist = musicManager.searchSongByArtist(inputArtist);
+
+                    if (songsByArtist.isEmpty()) {
+                        System.out.println("No songs found by the artist: " + inputArtist);
+                    } else {
+                        System.out.println("Songs by artist " + inputArtist + ":");
+                        for (Song actualSong : songsByArtist) {
+                            System.out.println("- " + actualSong.getTitle());
+                        }
+                    }
                     break;
+
                 case 5:
-                    System.out.println("=================Search Song By Range Date=============");
+                    System.out.println("=================Search Albums By Range Date=============");
+                    System.out.print("Enter start date (YYYY-MM-DD): ");
+                    String startDateInput = sc.nextLine().trim();
+
+                    System.out.print("Enter end date (YYYY-MM-DD): ");
+                    String endDateInput = sc.nextLine().trim();
+
+                    LocalDate startDate = LocalDate.parse(startDateInput);
+                    LocalDate endDate = LocalDate.parse(endDateInput);
+
+                    HashSet<Album> albumsInRange = musicManager.searchAlbumsByRangeDate(startDate, endDate);
+
+                    System.out.println("Albums found in the specified date range:");
+                    for (Album album : albumsInRange) {
+                        System.out.println("- " + album.getName() + " (" + album.getReleaseDate() + ")");
+                    }
                     break;
                 case 6:
                     System.out.println("=================Real Time Song Search =============");
@@ -276,12 +316,12 @@ public class UI {
         }
     }
 
-    private void songLevel(Scanner sc, MusicManager musicManager, Song song){
+    private void songLevel(Scanner sc, MusicManager musicManager, Song song) {
         boolean loop = true;
-        while (loop){
+        while (loop) {
             songMenu();
             int choice = sc.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     sc.nextLine();
                     System.out.println("============Play Song============");
@@ -292,14 +332,14 @@ public class UI {
                     System.out.println("============Pause Song============");
                     System.out.print("Enter Second:");
                     var inputPauseSecond = sc.nextInt();
-                    musicManager.pauseSong(song,inputPauseSecond);
+                    musicManager.pauseSong(song, inputPauseSecond);
                     break;
                 case 3:
                     sc.nextLine();
                     System.out.println("============Resume Song============");
                     System.out.print("Enter Second:");
                     var inputResumeSecond = sc.nextInt();
-                    musicManager.resumeSong(song,inputResumeSecond);
+                    musicManager.resumeSong(song, inputResumeSecond);
                     break;
                 case 4:
                     sc.nextLine();
@@ -321,30 +361,30 @@ public class UI {
         }
     }
 
-    private void ListSongs (ArrayList<Song> songs){
+    private void ListSongs(ArrayList<Song> songs) {
         songs.forEach(System.out::println);
     }
 
-    private void ListAlbums (ArrayList<Album> albums){
+    private void ListAlbums(ArrayList<Album> albums) {
         albums.forEach(System.out::println);
     }
 
-    private void ListArtists (ArrayList<Artist> artists){
+    private void ListArtists(ArrayList<Artist> artists) {
         artists.forEach(System.out::println);
     }
 
-    private void ListGenres (ArrayList<Genre> genres){
+    private void ListGenres(ArrayList<Genre> genres) {
         genres.forEach(System.out::println);
     }
 
-    private void profileLevel(Scanner sc, MemberUser user){
+    private void profileLevel(Scanner sc, MemberUser user) {
         MemberProfileManager memberProfileManager = new MemberProfileManager();
         memberProfileManager.setUser(user);
         boolean loop = true;
-        while (loop){
+        while (loop) {
             profileMenu();
             int choice = sc.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     System.out.println("=================Most Listened Songs=============");
                     user.getUserHistory().showFavoriteSongs();
@@ -377,8 +417,8 @@ public class UI {
         MusicManager manager = new MusicManager();
         AdminManager adminManager = new AdminManager();
         UI ui = new UI();
-        auth.register(new MemberUser("Steven",LocalDate.now(),"nystepro@gmail.com","123456Aa","54910978L","XD"));
-        ui.mainLevel(sc,auth,manager,adminManager);
+        auth.register(new MemberUser("Steven", LocalDate.now(), "nystepro@gmail.com", "123456Aa", "54910978L", "XD"));
+        ui.mainLevel(sc, auth, manager, adminManager);
     }
 
 }
