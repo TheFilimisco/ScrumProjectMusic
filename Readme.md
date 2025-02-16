@@ -33,10 +33,10 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 | Feature       | Description    | Status | Developer |
 |---------------|----------------|--------|-----------|
-| Add Song      | Add new Songs  | Done   |           |
-| Update Song   | Add new Artist | Done   |           |
-| Remove Song   | Add new Genre  | Done   |           |
-| Show All Song | Add new Genre  | Done   |           |
+| Add Song      | Add new Songs  | Done   | Julia     |
+| Update Song   | Add new Artist | Done   | Julia     |
+| Remove Song   | Add new Genre  | Done   | Julia     |
+| Show All Song | Add new Genre  | Done   | Julia     |
 
 
 #### MusicManager
@@ -84,7 +84,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 | Feature    | Description                 | Status | Developer |
 |------------|-----------------------------|--------|-----------| 
-| Data Class | generate instance DataSongs | Done   |           | 
+| Data Class | generate instance DataSongs | Done   | Steven & Julia | 
 
 
 ### Documentation
