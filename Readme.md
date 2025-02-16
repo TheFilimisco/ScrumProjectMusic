@@ -56,11 +56,15 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | Search By Release      | Search by range date and return Albums     | Done | Melina    |
 | Real Time Search       | Search by different parameters             | Done | Steven    |
 
-#### MemberProfileManager
+#### UserHistory
 
 | Feature               | Description                                                                 | Status | Developer |
 |-----------------------|-----------------------------------------------------------------------------|--|--------|
 | Show Profile          | Show your Profile                                                           | Done | Theo   |
+| Counter Song   |Increases the Song play value by +1 each time the user listens to a song   | Done | Theo   |
+| Counter Album   |Increases the Album play value by +1 each time the user listens to a song   | Done | Theo   |
+| Counter Artist   |Increases the Artist play value by +1 each time the user listens to a song   | Done | Theo   |
+| Counter Genre   |Increases the Genre play value by +1 each time the user listens to a song   | Done | Theo   |
 | Show Favorite Songs   | Provides a list of all your listened songs ordered by the amount of plays   | Done | Theo   |
 | Show Favorite Albums  | Provides a list of all your listened albums ordered by the amount of plays  | Done | Theo   |
 | Show Favorite Artists | Provides a list of all your listened artists ordered by the amount of plays | Done | Theo   |
