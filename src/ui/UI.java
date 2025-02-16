@@ -249,24 +249,30 @@ public class UI {
                     System.out.println("=================Search Song By Title=============");
                     System.out.print("Enter Title:");
                     var inputTitle = sc.nextLine();
-                    var song = musicManager.searchSongByTitle(inputTitle);
-                    songLevel(sc, musicManager, song);
+                    try {
+                        var song = musicManager.searchSongByTitle(inputTitle);
+                        songLevel(sc, musicManager, song);
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 3:
                     System.out.println("=================Search Songs By Genre=============");
                     System.out.print("Enter Genre: ");
                     var inputGenre = sc.nextLine();
-
-                    Genre genre = DataSongs.getInstance().getGenreByName(inputGenre);
-                    ArrayList<Song> songs = musicManager.searchSongByGenre(genre);
-
-                    if (songs.isEmpty()) {
-                        System.out.println("No songs found in the genre: " + inputGenre);
-                    } else {
-                        System.out.println("Songs in the genre " + inputGenre + ":");
-                        for (Song actualSong : songs) {
-                            System.out.println("- " + actualSong.getTitle());
+                    try {
+                        Genre genre = DataSongs.getInstance().getGenreByName(inputGenre);
+                        ArrayList<Song> songs = musicManager.searchSongByGenre(genre);
+                        if (songs.isEmpty()) {
+                            System.out.println("No songs found in the genre: " + inputGenre);
+                        } else {
+                            System.out.println("Songs in the genre " + inputGenre + ":");
+                            for (Song actualSong : songs) {
+                                System.out.println("- " + actualSong.getTitle());
+                            }
                         }
+                    } catch (Exception e){
+                        System.out.println(e.getMessage());
                     }
                     break;
 
@@ -274,16 +280,18 @@ public class UI {
                     System.out.println("=================Search Songs By Artist=============");
                     System.out.print("Enter Artist: ");
                     var inputArtist = sc.nextLine().trim();
-
-                    ArrayList<Song> songsByArtist = musicManager.searchSongByArtist(inputArtist);
-
-                    if (songsByArtist.isEmpty()) {
-                        System.out.println("No songs found by the artist: " + inputArtist);
-                    } else {
-                        System.out.println("Songs by artist " + inputArtist + ":");
-                        for (Song actualSong : songsByArtist) {
-                            System.out.println("- " + actualSong.getTitle());
+                    try {
+                        ArrayList<Song> songsByArtist = musicManager.searchSongByArtist(inputArtist);
+                        if (songsByArtist.isEmpty()) {
+                            System.out.println("No songs found by the artist: " + inputArtist);
+                        } else {
+                            System.out.println("Songs by artist " + inputArtist + ":");
+                            for (Song actualSong : songsByArtist) {
+                                System.out.println("- " + actualSong.getTitle());
+                            }
                         }
+                    } catch (Exception e){
+                        System.out.println(e.getMessage());
                     }
                     break;
 
@@ -295,14 +303,18 @@ public class UI {
                     System.out.print("Enter end date (YYYY-MM-DD): ");
                     String endDateInput = sc.nextLine().trim();
 
-                    LocalDate startDate = LocalDate.parse(startDateInput);
-                    LocalDate endDate = LocalDate.parse(endDateInput);
+                    try {
+                        LocalDate startDate = LocalDate.parse(startDateInput);
+                        LocalDate endDate = LocalDate.parse(endDateInput);
 
-                    HashSet<Album> albumsInRange = musicManager.searchAlbumsByRangeDate(startDate, endDate);
+                        HashSet<Album> albumsInRange = musicManager.searchAlbumsByRangeDate(startDate, endDate);
 
-                    System.out.println("Albums found in the specified date range:");
-                    for (Album album : albumsInRange) {
-                        System.out.println("- " + album.getName() + " (" + album.getReleaseDate() + ")");
+                        System.out.println("Albums found in the specified date range:");
+                        for (Album album : albumsInRange) {
+                            System.out.println("- " + album.getName() + " (" + album.getReleaseDate() + ")");
+                        }
+                    } catch (Exception e){
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 6:
