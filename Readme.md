@@ -41,41 +41,39 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### MusicManager
 
-| Feature                | Description                                | Status   | Developer |
-|------------------------|--------------------------------------------|----------|-----------|
-| Access Admin Interface | Access member user to yourself profile     | Done     | Steven    |
-| Validate Song          | Validate song                              | Done     | Melina    |
-| Play Song              | Play song                                  | Done     | Melina    |
-| Pause Song             | Pause song                                 | Done     | Melina    |
-| Resume Song            | Resume song                                | Done     | Melina    |
-| Next Song              | Next song                                  | Done     | Melina    |
-| Previous Song          | Previous song                              | Done     | Melina    |
-| Search Song by Title   | Search by Title and return a Song          | Done     | Melina    |
-| Shows Songs By Genre   | Search by Genre and return a list of songs | Done     | Melina    |
-| Search By Artist       | Search by Artist and return a Songs        | Done     | Melina    |
-| Search By Release      | Search by range date and return Albums     | Done     | Melina    |
-| Real Time Search       | Search by different parameters             | to be Do | Steven    |
+| Feature                | Description                                | Status | Developer |
+|------------------------|--------------------------------------------|--|-----------|
+| Access Admin Interface | Access member user to yourself profile     | Done | Steven    |
+| Validate Song          | Validate song                              | Done | Melina    |
+| Play Song              | Play song                                  | Done | Melina    |
+| Pause Song             | Pause song                                 | Done | Melina    |
+| Resume Song            | Resume song                                | Done | Melina    |
+| Next Song              | Next song                                  | Done | Melina    |
+| Previous Song          | Previous song                              | Done | Melina    |
+| Search Song by Title   | Search by Title and return a Song          | Done | Melina    |
+| Shows Songs By Genre   | Search by Genre and return a list of songs | Done | Melina    |
+| Search By Artist       | Search by Artist and return a Songs        | Done | Melina    |
+| Search By Release      | Search by range date and return Albums     | Done | Melina    |
+| Real Time Search       | Search by different parameters             | Done | Steven    |
 
 #### MemberProfileManager
 
-| Feature              | Description                      | Status   | Developer |
-|----------------------|----------------------------------|----------|-----------|
-| Show Profile         | Show your Profile                | Done     |           |
-| Show Top Ten Song    | The top Ten Songs                | Done     |           |
-| Show Top three Genre | The Genres most heading for User | to be Do |           |
-| Show Top Artist      | The Artist Most heading for User | to be Do |           |
-| update nickname      | Updated nickname                 | Done     |           |
-| update password      | Updated password                 | Done     |           |
-| update email         | Updated email                    | Done     |           | 
+| Feature               | Description                                                                 | Status | Developer |
+|-----------------------|-----------------------------------------------------------------------------|--|--------|
+| Show Profile          | Show your Profile                                                           | Done | Theo   |
+| Show Favorite Songs   | Provides a list of all your listened songs ordered by the amount of plays   | Done | Theo   |
+| Show Favorite Albums  | Provides a list of all your listened albums ordered by the amount of plays  | Done | Theo   |
+| Show Favorite Artists | Provides a list of all your listened artists ordered by the amount of plays | Done | Theo   |
+| Show Favorite Genres  | Provides a list of all your listened genres ordered by the amount of plays  | Done | Theo   | 
 
 ### 3. Songs
 ![Songs](img/songs.jpg)
 
 #### Song
 
-| Feature           | Description                         | Status | Developer |
-|-------------------|-------------------------------------|--------|-----------|
-| Song Class        | To Make Class Song with composition | Done   |           |
+| Feature           | Description                         | Status | Developer     |
+|-------------------|-------------------------------------|--------|---------------|
+| Song Class        | To Make Class Song with composition | Done   | Steven & Theo |
 
 ### 4. DATA
 ![Data](img/data.jpg)

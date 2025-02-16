@@ -8,7 +8,6 @@ import data.DataSongs;
 import management.MusicManager;
 import management.AdminManager;
 import model.song.Album;
-import model.song.Artist;
 import model.song.Genre;
 import model.song.Song;
 import model.user.GuestUser;
@@ -90,7 +89,6 @@ public class UI {
     }
 
 
-    //Works
     private void addNewUser(Scanner sc, Authentication auth) {
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
@@ -141,7 +139,6 @@ public class UI {
         return new GuestUser();
     }
 
-    //Works
     public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager, AdminManager adminManager) {
         boolean loop = true;
         while (loop) {
@@ -149,11 +146,9 @@ public class UI {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    //Works!
                     addNewUser(sc, auth);
                     break;
                 case 2:
-                    //Works!!
                     User user = loginInput(sc, auth);
                     if (user instanceof AdminUser) {
                         adminMenu(sc, adminManager);
@@ -162,7 +157,6 @@ public class UI {
                     }
                     break;
                 case 3:
-                    //Works!!
                     User userGuest = loginGuestInput();
                     secondLevel(sc, musicManager, userGuest);
                     break;
@@ -177,7 +171,7 @@ public class UI {
     }
 
 
-    private Song creatNewSong(Scanner sc, AdminManager adminManager) {
+    private Song createNewSong(Scanner sc, AdminManager adminManager) {
         sc.nextLine();
         System.out.print("Enter Title: ");
         var titleSong = sc.nextLine();
@@ -203,11 +197,11 @@ public class UI {
             switch (choice) {
                 case 1:
                     System.out.println("============Add Song==============");
-                    adminManager.addSong(creatNewSong(sc, adminManager));
+                    adminManager.addSong(createNewSong(sc, adminManager));
                     break;
                 case 2:
                     System.out.println("============Update Song==============");
-                    adminManager.updateSong(enterId(sc), creatNewSong(sc, adminManager));
+                    adminManager.updateSong(enterId(sc), createNewSong(sc, adminManager));
                     break;
                 case 3:
                     sc.nextLine();

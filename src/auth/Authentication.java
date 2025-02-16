@@ -9,7 +9,7 @@ public class Authentication {
     private HashMap<Integer,User> users;
 
     public Authentication() {
-        users = new HashMap<Integer,User>();
+        users = new HashMap<>();
     }
 
     public void register(User user){
@@ -62,31 +62,4 @@ public class Authentication {
         }
         return newUser.toString();
     }
-
-    public static void main(String[] args) {
-        /*
-    }       Authentication auth = new Authentication();
-        //Email Fail
-        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123dominio.com", "Pass1234","12345678L"));
-        System.out.println(auth.users);
-        //Password Fail
-        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123@dominio.com", "Pass1234asdasd","12345678L"));
-        System.out.println(auth.users);
-        //DNI fail
-        auth.register(new MemberUser("Steven", LocalDate.now(),"usuario123@dominio.com", "Pass1234","12345678l"));
-        System.out.println(auth.users);
-
-        //Correct Register
-        User dummy = new MemberUser("Steven", LocalDate.now(),"nystepro@gmail.com", "Pass1234","12345678L");
-        auth.register(dummy);
-        System.out.println(auth.users);
-
-        //Invalid Login
-//        auth.login(dummy.getNickName(), "Pass1234asdasdsa");
-
-        //Correct Login
-        System.out.println(auth.login(dummy.getNickName(), "Pass1234"));
-*/
-    }
-
 }

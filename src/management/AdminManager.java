@@ -40,15 +40,6 @@ public class AdminManager {
         return null;
     }
 
-    public Artist getArtistByName(String name){
-        for (Artist artist: DataSongs.getInstance().getArtists()){
-            if (artist.getName().equals(name)){
-                return artist;
-            }
-        }
-        return null;
-    }
-
     public Genre getGenreByName(String name){
         for (Genre genre: DataSongs.getInstance().getGenres()){
             if (genre.getName().equals(name)){
