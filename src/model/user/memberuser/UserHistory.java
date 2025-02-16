@@ -1,6 +1,5 @@
 package model.user.memberuser;
 
-import data.DataSongs;
 import model.song.Album;
 import model.song.Artist;
 import model.song.Genre;
@@ -60,42 +59,58 @@ public class UserHistory {
         historySongs.put(song, historySongs.getOrDefault(song, 0) + 1);
     }
 
+    public void counterAlbum(Album album){
+        historyAlbums.put(album, historyAlbums.getOrDefault(album, 0) + 1);
+    }
+
+    public void counterArtist(Artist artist){
+        historyArtists.put(artist, historyArtists.getOrDefault(artist, 0) + 1);
+    }
+
+    public void counterGenre(Genre genre){
+        historyGenres.put(genre, historyGenres.getOrDefault(genre, 0) + 1);
+    }
+
     public void showFavoriteSongs(){
         List<Map.Entry<Song,Integer>> newListSongs =new ArrayList<>(historySongs.entrySet());
-        newListSongs.sort(Map.Entry.comparingByValue());
+        newListSongs.sort(Map.Entry.<Song,Integer>comparingByValue().reversed());
         for (Map.Entry<Song,Integer> entry: newListSongs){
-            System.out.println(entry.getKey().getTitle() + ":" + entry.getValue());
+            System.out.println(entry.getKey().getTitle() + ": You listened to this song " + entry.getValue() + " times.");
         }
     }
 
     public void showFavoriteAlbums(){
-        List<Map.Entry<Song,Integer>> newListSongs =new ArrayList<>(historySongs.entrySet());
-        newListSongs.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<Song,Integer> entry: newListSongs){
-            System.out.println(entry.getKey().getTitle() + ":" + entry.getValue());
+        List<Map.Entry<Album,Integer>> newListAlbums = new ArrayList<>(historyAlbums.entrySet());
+        newListAlbums.sort(Map.Entry.<Album,Integer>comparingByValue().reversed());
+        for (Map.Entry<Album,Integer> entry: newListAlbums){
+            System.out.println(entry.getKey().getName() + ": You listened a song from this album " + entry.getValue() + " times.");
         }
     }
 
     public void showFavoriteArtists(){
-        List<Map.Entry<Song,Integer>> newListSongs =new ArrayList<>(historySongs.entrySet());
-        newListSongs.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<Song,Integer> entry: newListSongs){
-            System.out.println(entry.getKey().getTitle() + ":" + entry.getValue());
+        List<Map.Entry<Artist,Integer>> newListArtists =new ArrayList<>(historyArtists.entrySet());
+        newListArtists.sort(Map.Entry.comparingByValue());
+        for (Map.Entry<Artist,Integer> entry: newListArtists){
+            System.out.println(entry.getKey().getName() + ": You listened a song from this artist " + entry.getValue() + " times.");
         }
     }
 
     public void showFavoriteGenres(){
-        List<Map.Entry<Song,Integer>> newListSongs =new ArrayList<>(historySongs.entrySet());
-        newListSongs.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<Song,Integer> entry: newListSongs){
-            System.out.println(entry.getKey().getTitle() + ":" + entry.getValue());
+        List<Map.Entry<Genre,Integer>> newListGenres =new ArrayList<>(historyGenres.entrySet());
+        newListGenres.sort(Map.Entry.comparingByValue());
+        for (Map.Entry<Genre,Integer> entry: newListGenres){
+            System.out.println(entry.getKey().getName() + ":: You listened a song from this genre " + entry.getValue() + " times.");
         }
     }
 
     @Override
     public String toString() {
         return "UserHistory{" +
-                "songCounter=" + historySongs +
+                "historySongs=" + historySongs +
+                ", historyAlbums=" + historyAlbums +
+                ", historyArtists=" + historyArtists +
+                ", historyGenres=" + historyGenres +
                 '}';
     }
 }
+

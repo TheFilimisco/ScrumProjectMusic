@@ -59,7 +59,9 @@ public class MusicManager {
         }
         if (user instanceof MemberUser){
             ((MemberUser) user).getUserHistory().counterSong(song);
-            ((MemberUser) user).getUserHistory().showFavoriteSongs();
+            ((MemberUser) user).getUserHistory().counterAlbum(song.getAlbum());
+            ((MemberUser) user).getUserHistory().counterArtist(song.getAlbum().getArtist());
+            ((MemberUser) user).getUserHistory().counterGenre(song.getGenre());
         }
         output.append("Song ends.");
         System.out.println(output);

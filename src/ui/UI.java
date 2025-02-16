@@ -347,26 +347,19 @@ public class UI {
             switch (choice){
                 case 1:
                     System.out.println("=================Most Listened Songs=============");
-                    System.out.println("Introduce the amount of songs you want to see in the list:");
-                    ListSongs(memberProfileManager.showTopSongs(sc.nextInt()));
+                    user.getUserHistory().showFavoriteSongs();
                     break;
                 case 2:
                     System.out.println("=================Most Listened Albums=============");
-                    System.out.println("Introduce the amount of albums you want to see in the list:");
-
-                    ListAlbums(memberProfileManager.showTopAlbums(sc.nextInt()));
+                    user.getUserHistory().showFavoriteAlbums();
                     break;
                 case 3:
                     System.out.println("=================Most Listened Artists=============");
-                    System.out.println("Introduce the amount of artists you want to see in the list:");
-
-                    ListArtists(memberProfileManager.showTopArtists(sc.nextInt()));
+                    user.getUserHistory().showFavoriteArtists();
                     break;
                 case 4:
                     System.out.println("=================Most Listened Genres=============");
-                    System.out.println("Introduce the amount of genres you want to see in the list:");
-
-                    ListGenres(memberProfileManager.showTopGenres(sc.nextInt()));
+                    user.getUserHistory().showFavoriteGenres();
                     break;
                 case 5:
                     System.out.println("Back...");
