@@ -85,3 +85,9 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | Feature    | Description                 | Status |
 |------------|-----------------------------|--------|
 | Data Class | generate instance DataSongs | Done   |
+
+
+### Documentation
++ [Class Diagram Project Music Recommender System](https://drive.google.com/file/d/1EfPopsuNGfS590GFdUUheVOVDKjg46cd/view?usp=drive_link)
++ [Scrum Planner](https://docs.google.com/spreadsheets/d/1rEBiQTtqf0slariM-Mr7hmkwMj8jV7SxucW3dnAYtes/edit?usp=sharing)
++ [Scrum Report](https://docs.google.com/document/d/1i74uvANGPbzYQX3pflOqah5UxF3w0kFpW3wvfyKNrE0/edit?usp=sharing)
