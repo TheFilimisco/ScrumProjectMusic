@@ -17,10 +17,12 @@ public class UI {
 
     private void firstMenu() {
         System.out.println("""
+                ========================Welcome Music Recommender System=====================
                 1. Register
                 2. Login Admin or Member
                 3. Access App (Guest User)
                 4. Leave
+                =============================================================================
                 """);
         System.out.print("Select your option: ");
     }
@@ -28,6 +30,7 @@ public class UI {
 
     private void secondMenu(){
         System.out.println("""
+                =========================== App ===============================
                 1. Access to Profile
                 2. Search Songs by Title
                 3. Search Songs by Genre
@@ -35,18 +38,21 @@ public class UI {
                 5. Search Songs by Date(YYY-mm-dd)
                 6. Real-Time Song Search
                 7. Back
+                ================================================================
                 """);
         System.out.print("Select your option: ");
     }
 
     private void songMenu(){
         System.out.println("""
-                1.Play song
-                2.Pause song
-                3.Resume song
-                3.Next song
-                4.Previous song
-                5. Back
+                =========================Song Menu===============================
+                1. Play song
+                2. Pause song
+                3. Resume song
+                4. Next song
+                5. Previous song
+                6. Back
+                =================================================================
                 """);
         System.out.print("Select your option: ");
     }
@@ -54,11 +60,13 @@ public class UI {
 
     private void adminMenu(){
         System.out.println("""
+                =============================Admin Manager Menu============================
                 1.Add song
                 2.Update song
                 3.Remove song
                 4.Show All song
                 5. Back
+                ===========================================================================
                 """);
         System.out.print("Select your option: ");
     }
@@ -260,16 +268,28 @@ public class UI {
                 case 2:
                     sc.nextLine();
                     System.out.println("============Pause Song============");
+                    System.out.print("Enter Second:");
+                    var inputPauseSecond = sc.nextInt();
+                    musicManager.pauseSong(song,inputPauseSecond);
                     break;
                 case 3:
                     sc.nextLine();
-                    System.out.println("============Next Song============");
+                    System.out.println("============Resume Song============");
+                    System.out.print("Enter Second:");
+                    var inputResumeSecond = sc.nextInt();
+                    musicManager.resumeSong(song,inputResumeSecond);
                     break;
                 case 4:
                     sc.nextLine();
-                    System.out.println("============Previous Song============");
+                    System.out.println("============Next Song============");
+                    musicManager.nextSong();
                     break;
                 case 5:
+                    sc.nextLine();
+                    System.out.println("============Previous Song============");
+                    musicManager.previousSong();
+                    break;
+                case 6:
                     System.out.println("Back...");
                     loop = false;
                     break;
