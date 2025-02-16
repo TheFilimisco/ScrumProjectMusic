@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class TestAppMusic {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        Authentication auth = new Authentication();
-        UI ui = new UI();
-        ui.mainLevel(input,auth);
+//        Scanner input = new Scanner(System.in);
+//        Authentication auth = new Authentication();
+//        UI ui = new UI();
+//        ui.mainLevel(input,auth);
     }
 }

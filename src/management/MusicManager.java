@@ -20,8 +20,12 @@ public class MusicManager {
         this.user = user;
     }
 
+    // If user is userMember can add new Counters
+
 
     public void playSong(Song song) {
+        // If user is userMember can add new Counters
+
         StringBuilder output = new StringBuilder("Playing: " + song.getTitle() + "\n");
         for (int i = 1; i <= song.getDuration(); i++) {
             while (isPaused) {
@@ -142,7 +146,7 @@ public class MusicManager {
         return filteredAlbums;
     }
 
-/*    public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         MusicManager manager = new MusicManager(new GuestUser());
 
@@ -191,7 +195,7 @@ public class MusicManager {
                     running = false;
                     break;
             }
-}*/
+}
 
 //        testAlbum.addSong(testSong);
 //        testAlbum2.addSong(testSong2);
@@ -240,6 +244,7 @@ public class MusicManager {
 //        System.out.println("SEARCH ALBUMS BY RANGE DATE \n");
 //        System.out.println(manager.searchAlbumsByRangeDate(startDate,endDate));
     }
+}
 
 
 

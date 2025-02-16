@@ -17,12 +17,14 @@ public class UI {
     public void firstMenu() {
         System.out.println("""
                 1. Register
-                2. Login Member
+                2. Login Admin or Member
                 3. Access App (Guest User)
                 4. Leave
                 """);
         System.out.print("Select your option: ");
     }
+
+
     public void secondMenu(){
         System.out.println("""
                 1. Access to Profile
@@ -43,6 +45,18 @@ public class UI {
                 3.Resume song
                 3.Next song
                 4.Previous song
+                5. Back
+                """);
+        System.out.print("Select your option: ");
+    }
+
+
+    public void adminMenu(){
+        System.out.println("""
+                1.Add song
+                2.Update song
+                3.Remove song
+                3.Show All song
                 5. Back
                 """);
         System.out.print("Select your option: ");
@@ -97,7 +111,7 @@ public class UI {
         return new GuestUser();
     }
 
-    public void mainLevel(Scanner sc, Authentication auth){
+    public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager,AdminManager adminManager){
         boolean loop = true;
         while (loop) {
             firstMenu();
@@ -107,10 +121,15 @@ public class UI {
                     addNewUser(sc,auth);
                     break;
                 case 2:
-                    loginInput(sc,auth);
+                    User user = loginInput(sc,auth);
+                    if ( user instanceof AdminUser){
+                        adminMenu(sc,adminManager,user);
+                    }
+                    secondLevel(sc,musicManager,loginInput(sc,auth));
                     break;
                 case 3:
-                    loginGuestInput();
+                    User userGuest = loginGuestInput();
+                    secondLevel(sc,musicManager,userGuest);
                     break;
                 case 4:
                     System.out.println("Goodbye!");
@@ -123,6 +142,37 @@ public class UI {
     }
 
 
+    public void adminMenu(Scanner sc, AdminManager adminManager, User adminUser){
+
+        boolean loop = true;
+        while (loop){
+            adminMenu();
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1:
+                    System.out.println("============Add Song==============");
+                    break;
+                case 2:
+                    System.out.println("============Update Song==============");
+                    break;
+                case 3:
+                    System.out.println("============Remove Song==============");
+                    break;
+                case 4:
+                    System.out.println("============Show All Song==============");
+                    break;
+                case 5:
+                    System.out.println("Back");
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again");
+            }
+        }
+
+    }
+
+
     public void secondLevel(Scanner sc, MusicManager musicManager, User user){
         boolean loop = true;
         while (loop) {
@@ -130,17 +180,26 @@ public class UI {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Acceding...");
+                    System.out.println("=================Access your Profile=============");
                     break;
                 case 2:
-                    System.out.println("===========Search Song By Title=============");
-                    System.out.println("Put your title: ");
-                    var putTitleSong = sc.nextLine();
-                    musicManager.searchSongByTitle(putTitleSong);
-                    //Here would be Menu song
+                    System.out.println("=================SearchSongByTitle=============");
                     break;
                 case 3:
-                    System.out.println("Close...");
+                    System.out.println("=================SearchSongByGenre=============");
+                    break;
+                case 4:
+                    System.out.println("=================SearchSongByArtist=============");
+                    break;
+                case 5:
+                    System.out.println("=================SearchSongByRangeDate=============");
+                    break;
+                case 6:
+                    System.out.println("=================Real Time Song Search =============");
+                    break;
+                case 7:
+                    System.out.println("Back");
+                    loop = false;
                     break;
                 default:
                     System.out.println("Invalid option. Try again");
@@ -148,27 +207,4 @@ public class UI {
         }
     }
 
-//    public void adminMenu() {
-//        Scanner sc = new Scanner(System.in);
-//        boolean running = true;
-//
-//        while (running) {
-//            System.out.println("\n===== Admin Menu =====");
-//            System.out.println("1. Add Song");
-//            System.out.println("2. Remove Song");
-//            System.out.println("3. Show All Songs");
-//            System.out.println("4. Add Artist");
-//            System.out.println("5. Show All Artists");
-//            System.out.println("6. Add Genre");
-//            System.out.println("7. Show All Genres");
-//            System.out.println("8. Exit");
-//            System.out.print("Select an option: ");
-//
-//            int choice = sc.nextInt();
-//            sc.nextLine();
-//
-//            switch (choice) {
-//            }
-//        }
-//    }
 }
