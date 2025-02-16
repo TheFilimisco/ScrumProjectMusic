@@ -21,6 +21,8 @@ public class MemberUser extends User {
         this.userHistory = userHistory;
     }
 
+
+
     @Override
     public String accessPlatform() {
         return "member";

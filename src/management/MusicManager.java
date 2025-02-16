@@ -22,13 +22,18 @@ public class MusicManager {
         this.user = user;
     }
 
-    public MusicManager(){
+    public MusicManager() {
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void playSong(Song song) {
-        addCounter(song);
-
         StringBuilder output = new StringBuilder("Playing: " + song.getTitle() + "\n");
         for (int i = 1; i <= song.getDuration(); i++) {
             while (isPaused) {
@@ -49,8 +54,13 @@ public class MusicManager {
                 break;
             }
         }
+        if (user instanceof MemberUser){
+            ((MemberUser) user).getUserHistory().counterSong(song);
+            ((MemberUser) user).getUserHistory().showFavoriteSongs();
+        }
         output.append("Song ends.");
         System.out.println(output);
+
     }
 
     public void pauseSong(Song song, int pauseAfter) {
@@ -98,7 +108,7 @@ public class MusicManager {
 
     public Song searchSongByTitle(String title) {
         for (Song song : DataSongs.getInstance().getDataSongs().values()) {
-            if (song.getTitle().toLowerCase().equals(title)) {
+            if (song.getTitle().equals(title)) {
                 return song;
             }
         }
@@ -149,77 +159,76 @@ public class MusicManager {
         return filteredAlbums;
     }
 
-    public void addCounter(Song song) {
-
-        int songId = song.getId();
-        songCounter.put(songId, songCounter.getOrDefault(songId, 0) + 1);
-
-        Album album = song.getAlbum();
-        if (album != null) {
-            albumCounter.put(album, albumCounter.getOrDefault(album, 0) + 1);
-        }
-
-        Artist artist = album != null ? album.getArtist() : null;
-        if (artist != null) {
-            artistCounter.put(artist, artistCounter.getOrDefault(artist, 0) + 1);
-        }
-
-        Genre genre = song.getGenre();
-        if (genre != null) {
-            genreCounter.put(genre, genreCounter.getOrDefault(genre, 0) + 1);
-        }
-    }
-
-/*    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        MusicManager manager = new MusicManager(new GuestUser());
-
-//        AdminManager adminManager = new AdminManager(new AdminUser());
-
-//        Album testAlbum = new Album("DeBÍ TiRAR MáS FOToS",LocalDate.of(2025, 2, 13));
-//        Album testAlbum2 = new Album("Cuatro",LocalDate.of(2024,5,13));
-//        Album testAlbum3 = new Album("Solo_Salsa",LocalDate.of(2024,5,13));
+//    public void addCounter(Song song) {
+//        int songId = song.getId();
+//        songCounter.put(songId, songCounter.getOrDefault(songId, 0) + 1);
 //
-//        Genre testGenre = new Genre("Reggaeton","description","Puerto rico");
-//        Genre salsa = new Genre("Salsa","description","Puerto rico");
+//        Album album = song.getAlbum();
+//        if (album != null) {
+//            albumCounter.put(album, albumCounter.getOrDefault(album, 0) + 1);
+//        }
 //
-        Artist badBunny = new Artist("Bad Bunny",Country.PUERTO_RICO);
-//        Artist guayacanes = new Artist("Los Guayacanes", Country.COLOMBIA);
+//        Artist artist = album != null ? album.getArtist() : null;
+//        if (artist != null) {
+//            artistCounter.put(artist, artistCounter.getOrDefault(artist, 0) + 1);
+//        }
+//
+//        Genre genre = song.getGenre();
+//        if (genre != null) {
+//            genreCounter.put(genre, genreCounter.getOrDefault(genre, 0) + 1);
+//        }
+//    }
 
-//        var dtmf = new Song("DtMF",testAlbum,testGenre,badBunny,8);
-//        var plis = new Song("PLIS",testAlbum,testGenre,badBunny,8);
-//        var noSeVale = new Song("No se vale",testAlbum2,testGenre,guayacanes,8);
-//        var oiga = new Song("Oiga,mire, vea", testAlbum3,salsa,guayacanes, 10);
-
-//        adminManager.addSong(dtmf);
-//        adminManager.addSong(plis);
-//        adminManager.addSong(noSeVale);
-//        adminManager.addSong(oiga);
-
-        LocalDate startDate = LocalDate.of(2025, 1, 1);
-        LocalDate endDate = LocalDate.of(2025, 2, 14);
-
-        var running = true;
-
-        while (running){
-            var option = input.nextInt();
-            switch (option){
-                case 1:
-                    input.nextLine();
-                    System.out.println("Put a title: ");
-                    var inputTitle = input.nextLine();
-                    manager.playSong(manager.searchSongByTitle(inputTitle));
-                    manager.nextSong();
-                    manager.previousSong();
-                    break;
-                case 2:
-                    System.out.println(manager.searchSongByArtist(badBunny));
-                    break;
-                case 3:
-                    running = false;
-                    break;
-            }
-}*/
+    public static void main(String[] args) {
+//        Scanner input = new Scanner(System.in);
+//        LocalDate startDate = LocalDate.of(2025, 1, 1);
+//        LocalDate endDate = LocalDate.of(2025, 2, 14);
+//        MusicManager manager = new MusicManager(new MemberUser("Steven",startDate,"nystepro@gmail.com","123456Aa","54910978L","XD"));
+//
+////        AdminManager adminManager = new AdminManager(new AdminUser());
+//
+////        Album testAlbum = new Album("DeBÍ TiRAR MáS FOToS",LocalDate.of(2025, 2, 13));
+////        Album testAlbum2 = new Album("Cuatro",LocalDate.of(2024,5,13));
+////        Album testAlbum3 = new Album("Solo_Salsa",LocalDate.of(2024,5,13));
+////
+////        Genre testGenre = new Genre("Reggaeton","description","Puerto rico");
+////        Genre salsa = new Genre("Salsa","description","Puerto rico");
+////
+//        Artist badBunny = new Artist("Bad Bunny",Country.PUERTO_RICO);
+////        Artist guayacanes = new Artist("Los Guayacanes", Country.COLOMBIA);
+//
+////        var dtmf = new Song("DtMF",testAlbum,testGenre,badBunny,8);
+////        var plis = new Song("PLIS",testAlbum,testGenre,badBunny,8);
+////        var noSeVale = new Song("No se vale",testAlbum2,testGenre,guayacanes,8);
+////        var oiga = new Song("Oiga,mire, vea", testAlbum3,salsa,guayacanes, 10);
+//
+////        adminManager.addSong(dtmf);
+////        adminManager.addSong(plis);
+////        adminManager.addSong(noSeVale);
+////        adminManager.addSong(oiga);
+//
+//
+//
+//        var running = true;
+//
+//        while (running){
+//            var option = input.nextInt();
+//            switch (option){
+//                case 1:
+//                    input.nextLine();
+//                    DataSongs.getInstance().showAllSongs();
+//                    System.out.println("Put a title: ");
+//                    var inputTitle = input.nextLine();
+//                    manager.playSong(manager.searchSongByTitle(inputTitle));
+//                    break;
+//                case 2:
+//                    System.out.println(manager.searchSongByArtist(badBunny));
+//                    break;
+//                case 3:
+//                    running = false;
+//                    break;
+//            }
+//}
 
 //        testAlbum.addSong(testSong);
 //        testAlbum2.addSong(testSong2);
@@ -267,6 +276,7 @@ public class MusicManager {
 //        //SEARCH ALBUMS BY RANGE DATE
 //        System.out.println("SEARCH ALBUMS BY RANGE DATE \n");
 //        System.out.println(manager.searchAlbumsByRangeDate(startDate,endDate));
+}
 }
 
 

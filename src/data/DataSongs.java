@@ -43,13 +43,13 @@ public class DataSongs {
         albums.add(unVeranoSinTi);
         albums.add(whoReallyCares);
 
-        Song stressedout = new Song("stressed out",blurryface,rock,100);
-        Song forYou = new Song("For You", whoReallyCares, rock, 200);
-        Song ride = new Song("Ride",blurryface,pop,100);
-        Song neverita = new Song("Neverita", unVeranoSinTi, pop, 300);
-        Song velda = new Song("Velda",debiTirarMasFotos,reggaeton,200);
-        Song eoo = new Song("EoO", debiTirarMasFotos, reggaeton, 300);
-        Song efecto = new Song("Efecto", unVeranoSinTi, reggaeton, 200);
+        Song stressedout = new Song("stressed out",blurryface,rock,3);
+        Song forYou = new Song("For You", whoReallyCares, rock, 4);
+        Song ride = new Song("Ride",blurryface,pop,3);
+        Song neverita = new Song("Neverita", unVeranoSinTi, pop, 3);
+        Song velda = new Song("Velda",debiTirarMasFotos,reggaeton,3);
+        Song eoo = new Song("EoO", debiTirarMasFotos, reggaeton, 4);
+        Song efecto = new Song("Efecto", unVeranoSinTi, reggaeton, 3);
 
 
         //Song to Album

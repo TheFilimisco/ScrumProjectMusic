@@ -17,45 +17,45 @@ public class MemberProfileManager { ;
 
     public User showProfile(){return user;}
 
-    public ArrayList<Integer> showTopSongs(int option) {
-       List<Map.Entry<Integer, Integer>> sortedList = new ArrayList<>(history.getSongCounter().entrySet());
-       sortedList.sort(Map.Entry.<Integer,Integer>comparingByValue().reversed());
-       ArrayList<Integer> topSongs = new ArrayList<>();
-        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
-            topSongs.add(sortedList.get(i).getKey());
-        }
-        return topSongs;
-    }
-
-    public ArrayList<Album> showTopAlbums(int option) {
-        List<Map.Entry<Album, Integer>> sortedList = new ArrayList<>(history.getAlbumCounter().entrySet());
-        sortedList.sort(Map.Entry.<Album, Integer>comparingByValue().reversed());
-        ArrayList<Album> topAlbums = new ArrayList<>();
-        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
-            topAlbums.add(sortedList.get(i).getKey());
-        }
-        return topAlbums;
-    }
-
-    public ArrayList<Artist> showTopArtists(int option) {
-        List<Map.Entry<Artist, Integer>> sortedList = new ArrayList<>(history.getArtistCounter().entrySet());
-        sortedList.sort(Map.Entry.<Artist, Integer>comparingByValue().reversed());
-        ArrayList<Artist> topArtists = new ArrayList<>();
-        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
-            topArtists.add(sortedList.get(i).getKey());
-        }
-        return topArtists;
-    }
-
-    public ArrayList<Genre> showTopGenres(int option){
-        List<Map.Entry<Genre, Integer>> sortedList = new ArrayList<>(history.getGenreCounter().entrySet());
-       sortedList.sort(Map.Entry.<Genre,Integer>comparingByValue().reversed());
-        ArrayList<Genre> topGenres = new ArrayList<>();
-        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
-        topGenres.add(sortedList.get(i).getKey());
-    }
-        return topGenres;
-}
+//    public ArrayList<Integer> showTopSongs(int option) {
+//       List<Map.Entry<Integer, Integer>> sortedList = new ArrayList<>(history.getSongCounter().entrySet());
+//       sortedList.sort(Map.Entry.<Integer,Integer>comparingByValue().reversed());
+//       ArrayList<Integer> topSongs = new ArrayList<>();
+//        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
+//            topSongs.add(sortedList.get(i).getKey());
+//        }
+//        return topSongs;
+//    }
+//
+//    public ArrayList<Album> showTopAlbums(int option) {
+//        List<Map.Entry<Album, Integer>> sortedList = new ArrayList<>(history.getAlbumCounter().entrySet());
+//        sortedList.sort(Map.Entry.<Album, Integer>comparingByValue().reversed());
+//        ArrayList<Album> topAlbums = new ArrayList<>();
+//        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
+//            topAlbums.add(sortedList.get(i).getKey());
+//        }
+//        return topAlbums;
+//    }
+//
+//    public ArrayList<Artist> showTopArtists(int option) {
+//        List<Map.Entry<Artist, Integer>> sortedList = new ArrayList<>(history.getArtistCounter().entrySet());
+//        sortedList.sort(Map.Entry.<Artist, Integer>comparingByValue().reversed());
+//        ArrayList<Artist> topArtists = new ArrayList<>();
+//        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
+//            topArtists.add(sortedList.get(i).getKey());
+//        }
+//        return topArtists;
+//    }
+//
+//    public ArrayList<Genre> showTopGenres(int option){
+//        List<Map.Entry<Genre, Integer>> sortedList = new ArrayList<>(history.getGenreCounter().entrySet());
+//       sortedList.sort(Map.Entry.<Genre,Integer>comparingByValue().reversed());
+//        ArrayList<Genre> topGenres = new ArrayList<>();
+//        for (int i = 0; i < Math.min(option, sortedList.size()); i++) {
+//        topGenres.add(sortedList.get(i).getKey());
+//    }
+//        return topGenres;
+//    }
 
     public void updatePassword (String password) {
         if (password.contains(user.getName())){

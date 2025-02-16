@@ -201,21 +201,28 @@ public class UI {
                     System.out.println("Invalid option. Try again");
             }
         }
-
     }
 
+
     private void secondLevel(Scanner sc, MusicManager musicManager, User user){
+        musicManager.setUser(user);
         boolean loop = true;
         while (loop) {
             secondMenu();
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
+                    sc.nextLine();
                     System.out.println("=================Access your Profile=============");
                     //MethodMemberProfileManager
                     break;
                 case 2:
+                    sc.nextLine();
                     System.out.println("=================SearchSongByTitle=============");
+                    System.out.print("Enter Title:");
+                    var inputTitle = sc.nextLine();
+                    var song = musicManager.searchSongByTitle(inputTitle);
+                    songLevel(sc,musicManager,song);
                     break;
                 case 3:
                     System.out.println("=================SearchSongByGenre=============");
@@ -239,12 +246,47 @@ public class UI {
         }
     }
 
+    private void songLevel(Scanner sc, MusicManager musicManager, Song song){
+        boolean loop = true;
+        while (loop){
+            songMenu();
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1:
+                    sc.nextLine();
+                    System.out.println("============Play Song============");
+                    musicManager.playSong(song);
+                    break;
+                case 2:
+                    sc.nextLine();
+                    System.out.println("============Pause Song============");
+                    break;
+                case 3:
+                    sc.nextLine();
+                    System.out.println("============Next Song============");
+                    break;
+                case 4:
+                    sc.nextLine();
+                    System.out.println("============Previous Song============");
+                    break;
+                case 5:
+                    System.out.println("Back...");
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again");
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Authentication auth = new Authentication();
         MusicManager manager = new MusicManager();
         AdminManager adminManager = new AdminManager();
         UI ui = new UI();
+        auth.register(new MemberUser("Steven",LocalDate.now(),"nystepro@gmail.com","123456Aa","54910978L","XD"));
         ui.mainLevel(sc,auth,manager,adminManager);
     }
 
