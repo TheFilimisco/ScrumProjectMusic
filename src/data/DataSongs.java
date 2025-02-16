@@ -116,7 +116,11 @@ public class DataSongs {
     }
 
     public void updateSong(int id, Song song){
-        dataSongs.put(id,song);
+        var updateSong =  dataSongs.get(id);
+        updateSong.setTitle(song.getTitle());
+        updateSong.setAlbum(song.getAlbum());
+        updateSong.setGenre(song.getGenre());
+        updateSong.setDuration(song.getDuration());
     }
 
     public void removeSong(int id) {

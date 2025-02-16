@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import management.MusicManager;
 import management.AdminManager;
+import model.song.Song;
 import model.user.GuestUser;
 import model.user.User;
 import model.user.AdminUser;
@@ -56,7 +57,7 @@ public class UI {
                 1.Add song
                 2.Update song
                 3.Remove song
-                3.Show All song
+                4.Show All song
                 5. Back
                 """);
         System.out.print("Select your option: ");
@@ -149,8 +150,26 @@ public class UI {
     }
 
 
-    public void adminMenu(Scanner sc, AdminManager adminManager, User adminUser){
 
+    public Song creatNewSong(Scanner sc, AdminManager adminManager){
+        sc.nextLine();
+        System.out.print("Enter Title: ");
+        var titleSong = sc.nextLine();
+        System.out.print("Enter Albums' Name: ");
+        var albumName = sc.nextLine();
+        System.out.print("Enter Genre's Name: ");
+        var genreName = sc.nextLine();
+        System.out.print("Enter Duration: ");
+        var duration = sc.nextInt();
+        return new Song(titleSong,adminManager.getAlbumByName(albumName),adminManager.getGenreByName(genreName),duration);
+    }
+
+    public int enterId(Scanner sc){
+        System.out.println("Enter your Id: ");
+        return sc.nextInt();
+    }
+
+    public void adminMenu(Scanner sc, AdminManager adminManager, User adminUser){
         boolean loop = true;
         while (loop){
             adminMenu();
@@ -158,15 +177,20 @@ public class UI {
             switch (choice){
                 case 1:
                     System.out.println("============Add Song==============");
+                    adminManager.addSong(creatNewSong(sc,adminManager));
                     break;
                 case 2:
                     System.out.println("============Update Song==============");
+                    adminManager.updateSong(enterId(sc),creatNewSong(sc,adminManager));
                     break;
                 case 3:
+                    sc.nextLine();
                     System.out.println("============Remove Song==============");
+                    adminManager.removeSong(enterId(sc));
                     break;
                 case 4:
                     System.out.println("============Show All Song==============");
+                    adminManager.showAllSongs();
                     break;
                 case 5:
                     System.out.println("Back");
@@ -219,7 +243,6 @@ public class UI {
         Authentication auth = new Authentication();
         MusicManager manager = new MusicManager();
         AdminManager adminManager = new AdminManager();
-
         UI ui = new UI();
         ui.mainLevel(sc,auth,manager,adminManager);
     }

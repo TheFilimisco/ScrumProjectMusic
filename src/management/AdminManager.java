@@ -36,66 +36,31 @@ public class AdminManager {
         DataSongs.getInstance().showAllSongs();
     }
 
-//    public void addArtist(Artist artist) {
-//        DataSongs.getInstance().addArtist(artist);
-//    }
-//
-//    public void showAllArtists() {
-//        DataSongs.getInstance().showAllArtists();
-//    }
-//
-//    public void addGenre(Genre genre) {
-//        DataSongs.getInstance().addGenre(genre);
-//    }
-//
-//    public void showAllGenres() {
-//        DataSongs.getInstance().showAllGenres();
-//    }
-
-    public static void main(String[] args) {
-//        AdminUser adminUser1 = new AdminUser(
-//                "Julia Daswani",
-//                LocalDate.of(2003, 4, 23),
-//                "juliaprem23@gmail.com",
-//                "Abcdefgh1",
-//                "47598354S",
-//                "AdminJulia"
-//        );
-//        AdminManager adminManager = new AdminManager(adminUser1);
-//
-//        Artist badBunny = new Artist("Bad Bunny", Country.PUERTO_RICO);
-//        Artist guayacanes = new Artist("Los Guayacanes", Country.COLOMBIA);
-//
-//        Album debiTirarMasFotos = new Album("DeBÍ TiRAR MáS FOToS", LocalDate.of(2025, 2, 13), badBunny);
-//        Album cuatro = new Album("Cuatro", LocalDate.of(2024, 5, 13), guayacanes);
-//
-//        Genre reggaeton = new Genre("Reggaeton", "Puerto rico");
-//        Genre salsa = new Genre("Salsa", "Puerto rico");
-//
-//        var dtmf = new Song("DtMF", debiTirarMasFotos, reggaeton, 8);
-//        var noSeVale = new Song("No se vale", cuatro, reggaeton, 8);
-//
-//        adminManager.addArtist(badBunny);
-//        adminManager.addArtist(guayacanes);
-//        adminManager.addGenre(reggaeton);
-//        adminManager.addGenre(salsa);
-//
-//        adminManager.addSong(dtmf);
-//        adminManager.addSong(noSeVale);
-//
-//        System.out.println("\nLista de artistas:");
-//        adminManager.showAllArtists();
-//        System.out.println("\nLista de géneros:");
-//        adminManager.showAllGenres();
-//        System.out.println("\nLista de canciones:");
-//        adminManager.showAllSongs();
-//
-//        Song updatedSong = new Song("Wueltita", debiTirarMasFotos, reggaeton, 3);
-//        adminManager.updateSong(1, updatedSong);
-//
-//        adminManager.removeSong(2);
-//
-//        System.out.println("\nLista de canciones después de modificaciones:");
-//        adminManager.showAllSongs();
+    public Album getAlbumByName(String name){
+        for (Album album : DataSongs.getInstance().getAlbums()){
+            if (album.getName().equals(name)){
+                return album;
+            }
+        }
+        return null;
     }
+
+    public Artist getArtistByName(String name){
+        for (Artist artist: DataSongs.getInstance().getArtists()){
+            if (artist.getName().equals(name)){
+                return artist;
+            }
+        }
+        return null;
+    }
+
+    public Genre getGenreByName(String name){
+        for (Genre genre: DataSongs.getInstance().getGenres()){
+            if (genre.getName().equals(name)){
+                return genre;
+            }
+        }
+        return null;
+    }
+    
 }
