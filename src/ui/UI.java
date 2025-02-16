@@ -4,17 +4,22 @@ import auth.Authentication;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 import management.MemberProfileManager;
 import management.MusicManager;
 import management.AdminManager;
+import model.song.Album;
+import model.song.Artist;
+import model.song.Genre;
 import model.song.Song;
 import model.user.GuestUser;
 import model.user.User;
 import model.user.AdminUser;
 import model.user.memberuser.MemberUser;
 
+import javax.lang.model.element.Element;
 import java.time.LocalDate;
 
 public class UI {
@@ -64,8 +69,11 @@ public class UI {
     private void profileMenu(){
         System.out.println("""
                 =========================Profile Menu===============================
-                1. Show Top 10 Top Songs
-                2. Back
+                1. Show Top Songs
+                2. Show Top Albums
+                3. Show Top Artists
+                4. Show Top Genres
+                5. Back
                 =================================================================
                 """);
         System.out.print("Select your option: ");
@@ -240,20 +248,20 @@ public class UI {
                     break;
                 case 2:
                     sc.nextLine();
-                    System.out.println("=================SearchSongByTitle=============");
+                    System.out.println("=================Search Song By Title=============");
                     System.out.print("Enter Title:");
                     var inputTitle = sc.nextLine();
                     var song = musicManager.searchSongByTitle(inputTitle);
                     songLevel(sc,musicManager,song);
                     break;
                 case 3:
-                    System.out.println("=================SearchSongByGenre=============");
+                    System.out.println("=================Search Song By Genre=============");
                     break;
                 case 4:
-                    System.out.println("=================SearchSongByArtist=============");
+                    System.out.println("=================Search Song By Artist=============");
                     break;
                 case 5:
-                    System.out.println("=================SearchSongByRangeDate=============");
+                    System.out.println("=================Search Song By Range Date=============");
                     break;
                 case 6:
                     System.out.println("=================Real Time Song Search =============");
@@ -313,8 +321,20 @@ public class UI {
         }
     }
 
-    private void readLists(ArrayList<Song> songs){
+    private void ListSongs (ArrayList<Song> songs){
         songs.forEach(System.out::println);
+    }
+
+    private void ListAlbums (ArrayList<Album> albums){
+        albums.forEach(System.out::println);
+    }
+
+    private void ListArtists (ArrayList<Artist> artists){
+        artists.forEach(System.out::println);
+    }
+
+    private void ListGenres (ArrayList<Genre> genres){
+        genres.forEach(System.out::println);
     }
 
     private void profileLevel(Scanner sc, MemberUser user){
@@ -326,10 +346,29 @@ public class UI {
             int choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    System.out.println("=================Top 10 Songs Most Listening=============");
-                    readLists(memberProfileManager.showTopSongs());
+                    System.out.println("=================Most Listened Songs=============");
+                    System.out.println("Introduce the amount of songs you want to see in the list:");
+                    ListSongs(memberProfileManager.showTopSongs(sc.nextInt()));
                     break;
                 case 2:
+                    System.out.println("=================Most Listened Albums=============");
+                    System.out.println("Introduce the amount of albums you want to see in the list:");
+
+                    ListAlbums(memberProfileManager.showTopAlbums(sc.nextInt()));
+                    break;
+                case 3:
+                    System.out.println("=================Most Listened Artists=============");
+                    System.out.println("Introduce the amount of artists you want to see in the list:");
+
+                    ListArtists(memberProfileManager.showTopArtists(sc.nextInt()));
+                    break;
+                case 4:
+                    System.out.println("=================Most Listened Genres=============");
+                    System.out.println("Introduce the amount of genres you want to see in the list:");
+
+                    ListGenres(memberProfileManager.showTopGenres(sc.nextInt()));
+                    break;
+                case 5:
                     System.out.println("Back...");
                     loop = false;
                 default:
