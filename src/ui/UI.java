@@ -9,13 +9,13 @@ import model.song.Song;
 import model.user.GuestUser;
 import model.user.User;
 import model.user.AdminUser;
-import model.user.MemberUser;
+import model.user.memberuser.MemberUser;
 
 import java.time.LocalDate;
 
 public class UI {
 
-    public void firstMenu() {
+    private void firstMenu() {
         System.out.println("""
                 1. Register
                 2. Login Admin or Member
@@ -26,7 +26,7 @@ public class UI {
     }
 
 
-    public void secondMenu(){
+    private void secondMenu(){
         System.out.println("""
                 1. Access to Profile
                 2. Search Songs by Title
@@ -39,7 +39,7 @@ public class UI {
         System.out.print("Select your option: ");
     }
 
-    public void songMenu(){
+    private void songMenu(){
         System.out.println("""
                 1.Play song
                 2.Pause song
@@ -52,7 +52,7 @@ public class UI {
     }
 
 
-    public void adminMenu(){
+    private void adminMenu(){
         System.out.println("""
                 1.Add song
                 2.Update song
@@ -64,7 +64,7 @@ public class UI {
     }
 
     //Works
-    public void addNewUser(Scanner sc, Authentication auth){
+    private void addNewUser(Scanner sc, Authentication auth){
         System.out.println("Enter user type (admin/member): ");
         String userType = sc.next().toLowerCase();
         System.out.print("Enter name: ");
@@ -95,7 +95,7 @@ public class UI {
     }
 
 
-    public User loginInput(Scanner sc, Authentication auth){
+    private User loginInput(Scanner sc, Authentication auth){
         System.out.print("Enter nickname: ");
         String nickname = sc.next();
         System.out.print("Enter password: ");
@@ -129,7 +129,7 @@ public class UI {
                     //Works!!
                     User user = loginInput(sc,auth);
                     if ( user instanceof AdminUser){
-                        adminMenu(sc,adminManager,user);
+                        adminMenu(sc,adminManager);
                     } else if (user instanceof MemberUser) {
                         secondLevel(sc,musicManager,user);
                     }
@@ -151,7 +151,7 @@ public class UI {
 
 
 
-    public Song creatNewSong(Scanner sc, AdminManager adminManager){
+    private Song creatNewSong(Scanner sc, AdminManager adminManager){
         sc.nextLine();
         System.out.print("Enter Title: ");
         var titleSong = sc.nextLine();
@@ -164,12 +164,12 @@ public class UI {
         return new Song(titleSong,adminManager.getAlbumByName(albumName),adminManager.getGenreByName(genreName),duration);
     }
 
-    public int enterId(Scanner sc){
+    private int enterId(Scanner sc){
         System.out.println("Enter your Id: ");
         return sc.nextInt();
     }
 
-    public void adminMenu(Scanner sc, AdminManager adminManager, User adminUser){
+    private void adminMenu(Scanner sc, AdminManager adminManager){
         boolean loop = true;
         while (loop){
             adminMenu();
@@ -203,7 +203,7 @@ public class UI {
 
     }
 
-    public void secondLevel(Scanner sc, MusicManager musicManager, User user){
+    private void secondLevel(Scanner sc, MusicManager musicManager, User user){
         boolean loop = true;
         while (loop) {
             secondMenu();
@@ -211,6 +211,7 @@ public class UI {
             switch (choice) {
                 case 1:
                     System.out.println("=================Access your Profile=============");
+                    //MethodMemberProfileManager
                     break;
                 case 2:
                     System.out.println("=================SearchSongByTitle=============");
@@ -238,7 +239,6 @@ public class UI {
     }
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         Authentication auth = new Authentication();
         MusicManager manager = new MusicManager();

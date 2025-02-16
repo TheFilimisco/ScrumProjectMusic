@@ -1,21 +1,24 @@
-package model.user;
+package model.user.memberuser;
 
-import model.song.Song;
+import model.user.User;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 
-public class MemberUser extends User{
-    private HashMap<Integer,Integer> songsUser;
+public class MemberUser extends User {
+    private UserHistory userHistory;
 
     public MemberUser(String name, LocalDate dateOfBirth, String email, String password, String identificationNumber, String nickName) {
         super(name, dateOfBirth, email, password, identificationNumber, nickName);
-        songsUser = new HashMap<Integer,Integer>();
+        userHistory = new UserHistory();
     }
 
-    public MemberUser() {
-        songsUser = new HashMap<Integer,Integer>();
+    public UserHistory getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(UserHistory userHistory) {
+        this.userHistory = userHistory;
     }
 
     @Override

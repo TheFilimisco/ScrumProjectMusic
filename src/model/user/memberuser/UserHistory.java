@@ -1,4 +1,4 @@
-package management;
+package model.user.memberuser;
 
 import model.song.Album;
 import model.song.Artist;

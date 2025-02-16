@@ -4,8 +4,9 @@ import model.song.Album;
 import model.song.Artist;
 import model.song.Genre;
 import model.song.Song;
-import model.user.MemberUser;
+import model.user.memberuser.MemberUser;
 import model.user.User;
+import model.user.memberuser.UserHistory;
 
 import java.util.*;
 

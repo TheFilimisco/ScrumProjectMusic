@@ -10,11 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AdminManager {
-    private AdminUser adminUser;
-
-    public AdminManager(AdminUser adminUser) {
-        this.adminUser = adminUser;
-    }
 
     public AdminManager(){
 
@@ -62,5 +57,5 @@ public class AdminManager {
         }
         return null;
     }
-    
+
 }

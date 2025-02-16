@@ -1,12 +1,8 @@
 package auth;
 
-import model.user.AdminUser;
-import model.user.MemberUser;
 import model.user.User;
 
-import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Authentication {
