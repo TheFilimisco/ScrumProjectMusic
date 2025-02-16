@@ -95,6 +95,15 @@ public class DataSongs {
         return instance;
     }
 
+    public Genre getGenreByName(String name) {
+        for (Genre genre : genres) {
+            if (genre.getName().equalsIgnoreCase(name)) {
+                return genre;
+            }
+        }
+        throw new IllegalStateException("No genre found with the name: " + name);
+    }
+
     public HashMap<Integer, Song> getDataSongs() {
         return dataSongs;
     }

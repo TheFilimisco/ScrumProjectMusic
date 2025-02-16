@@ -26,7 +26,7 @@ public class MusicManager {
     }
 
     public User getUser() {
-        if (user instanceof MemberUser){
+        if (user instanceof MemberUser) {
             return (MemberUser) user;
         }
         return user;
@@ -57,7 +57,7 @@ public class MusicManager {
                 break;
             }
         }
-        if (user instanceof MemberUser){
+        if (user instanceof MemberUser) {
             ((MemberUser) user).getUserHistory().counterSong(song);
             ((MemberUser) user).getUserHistory().showFavoriteSongs();
         }
@@ -110,7 +110,6 @@ public class MusicManager {
     }
 
 
-
     public Song searchSongByTitle(String title) {
         for (Song song : DataSongs.getInstance().getDataSongs().values()) {
             if (song.getTitle().equals(title)) {
@@ -135,30 +134,31 @@ public class MusicManager {
         return songsByGenre;
     }
 
-    public ArrayList<Song> searchSongByArtist(Artist artist) {
+    public ArrayList<Song> searchSongByArtist(String name) {
         ArrayList<Song> songsByArtist = new ArrayList<>();
 
         for (Song song : DataSongs.getInstance().getDataSongs().values()) {
-            if (song.getAlbum().getArtist().equals(artist)) {
+            if (song.getAlbum().getArtist().getName().equalsIgnoreCase(name)) {
                 songsByArtist.add(song);
             }
         }
         if (songsByArtist.isEmpty()) {
-            throw new IllegalStateException("No songs were found by the artist  " + artist.getName());
+            throw new IllegalStateException("No songs were found by the artist: " + name);
         }
         return songsByArtist;
     }
 
+
     public HashSet<Album> searchAlbumsByRangeDate(LocalDate startDate, LocalDate endDate) {
         HashSet<Album> filteredAlbums = new HashSet<>();
 
-        for (Song song:DataSongs.getInstance().getDataSongs().values()){
-                if (!song.getAlbum().getReleaseDate().isBefore(startDate) && !song.getAlbum().getReleaseDate().isAfter(endDate)) {
-                    filteredAlbums.add(song.getAlbum());
-                }
-                if (filteredAlbums.isEmpty()) {
-                    throw new IllegalStateException("No albums found in the specified date range.");
-                }
+        for (Song song : DataSongs.getInstance().getDataSongs().values()) {
+            if (!song.getAlbum().getReleaseDate().isBefore(startDate) && !song.getAlbum().getReleaseDate().isAfter(endDate)) {
+                filteredAlbums.add(song.getAlbum());
+            }
+            if (filteredAlbums.isEmpty()) {
+                throw new IllegalStateException("No albums found in the specified date range.");
+            }
         }
 
         return filteredAlbums;
@@ -281,7 +281,7 @@ public class MusicManager {
 //        //SEARCH ALBUMS BY RANGE DATE
 //        System.out.println("SEARCH ALBUMS BY RANGE DATE \n");
 //        System.out.println(manager.searchAlbumsByRangeDate(startDate,endDate));
-}
+    }
 }
 
 
