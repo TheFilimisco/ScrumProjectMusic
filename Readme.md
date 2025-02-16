@@ -80,7 +80,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 ### 4. DATA
 ![Data](img/data.jpg)
 
-#### Song
+#### Data
 
 | Feature    | Description                 | Status | Developer      |
 |------------|-----------------------------|--------|----------------| 
