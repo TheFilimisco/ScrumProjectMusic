@@ -241,7 +241,11 @@ public class UI {
             switch (choice) {
                 case 1:
                     System.out.println("=================Access your Profile=============");
-                    profileLevel(sc, (MemberUser) user);
+                    try {
+                        profileLevel(sc, (MemberUser) user);
+                    } catch (Exception e) {
+                        System.out.println("Access denied!");
+                    }
                     break;
                 case 2:
                     System.out.println("=================Search Song By Title=============");
@@ -378,8 +382,8 @@ public class UI {
     }
 
     private void profileLevel(Scanner sc, MemberUser user) {
-        MemberProfileManager memberProfileManager = new MemberProfileManager();
-        memberProfileManager.setUser(user);
+//        MemberProfileManager memberProfileManager = new MemberProfileManager();
+//        memberProfileManager.setUser(user);
         boolean loop = true;
         while (loop) {
             profileMenu();
