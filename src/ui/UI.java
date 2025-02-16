@@ -1,8 +1,12 @@
 package ui;
 
 import auth.Authentication;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import management.MemberProfileManager;
 import management.MusicManager;
 import management.AdminManager;
 import model.song.Song;
@@ -52,6 +56,16 @@ public class UI {
                 4. Next song
                 5. Previous song
                 6. Back
+                =================================================================
+                """);
+        System.out.print("Select your option: ");
+    }
+
+    private void profileMenu(){
+        System.out.println("""
+                =========================Profile Menu===============================
+                1. Show Top 10 Top Songs
+                2. Back
                 =================================================================
                 """);
         System.out.print("Select your option: ");
@@ -222,7 +236,7 @@ public class UI {
                 case 1:
                     sc.nextLine();
                     System.out.println("=================Access your Profile=============");
-                    //MethodMemberProfileManager
+                    profileLevel(sc,(MemberUser)user);
                     break;
                 case 2:
                     sc.nextLine();
@@ -293,6 +307,31 @@ public class UI {
                     System.out.println("Back...");
                     loop = false;
                     break;
+                default:
+                    System.out.println("Invalid option. Try again");
+            }
+        }
+    }
+
+    private void readLists(ArrayList<Song> songs){
+        songs.forEach(System.out::println);
+    }
+
+    private void profileLevel(Scanner sc, MemberUser user){
+        MemberProfileManager memberProfileManager = new MemberProfileManager();
+        memberProfileManager.setUser(user);
+        boolean loop = true;
+        while (loop){
+            profileMenu();
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1:
+                    System.out.println("=================Top 10 Songs Most Listening=============");
+                    readLists(memberProfileManager.showTopSongs());
+                    break;
+                case 2:
+                    System.out.println("Back...");
+                    loop = false;
                 default:
                     System.out.println("Invalid option. Try again");
             }

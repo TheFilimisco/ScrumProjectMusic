@@ -26,6 +26,9 @@ public class MusicManager {
     }
 
     public User getUser() {
+        if (user instanceof MemberUser){
+            return (MemberUser) user;
+        }
         return user;
     }
 
@@ -105,6 +108,8 @@ public class MusicManager {
         Song previousSong = DataSongs.getInstance().getDataSongs().get(currentSongIndex);
         playSong(previousSong);
     }
+
+
 
     public Song searchSongByTitle(String title) {
         for (Song song : DataSongs.getInstance().getDataSongs().values()) {
