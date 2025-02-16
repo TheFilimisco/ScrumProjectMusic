@@ -4,10 +4,11 @@ import auth.Authentication;
 import java.util.Scanner;
 
 import management.MusicManager;
+import management.AdminManager;
 import model.user.GuestUser;
 import model.user.User;
-import model.user.MemberUser;
 import model.user.AdminUser;
+import model.user.MemberUser;
 
 import java.time.LocalDate;
 
@@ -145,9 +146,29 @@ public class UI {
                     System.out.println("Invalid option. Try again");
             }
         }
-
     }
 
-
-
+//    public void adminMenu() {
+//        Scanner sc = new Scanner(System.in);
+//        boolean running = true;
+//
+//        while (running) {
+//            System.out.println("\n===== Admin Menu =====");
+//            System.out.println("1. Add Song");
+//            System.out.println("2. Remove Song");
+//            System.out.println("3. Show All Songs");
+//            System.out.println("4. Add Artist");
+//            System.out.println("5. Show All Artists");
+//            System.out.println("6. Add Genre");
+//            System.out.println("7. Show All Genres");
+//            System.out.println("8. Exit");
+//            System.out.print("Select an option: ");
+//
+//            int choice = sc.nextInt();
+//            sc.nextLine();
+//
+//            switch (choice) {
+//            }
+//        }
+//    }
 }
