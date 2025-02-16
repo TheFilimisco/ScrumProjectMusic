@@ -28,6 +28,8 @@ public class MusicManager {
 
 
     public void playSong(Song song) {
+        addCounter(song);
+
         StringBuilder output = new StringBuilder("Playing: " + song.getTitle() + "\n");
         for (int i = 1; i <= song.getDuration(); i++) {
             while (isPaused) {
