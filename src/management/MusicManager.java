@@ -165,6 +165,23 @@ public class MusicManager {
 
         return filteredAlbums;
     }
+
+    public void searchSongRealTime(Scanner sc){
+        while (true){
+            System.out.println("Search Post (write exit for leave): ");
+            String inputTitleSong = sc.nextLine().toLowerCase();
+
+            if (inputTitleSong.equals("exit")){
+                break;
+            }
+            System.out.println("\nSearch: \n");
+            for (Song song: DataSongs.getInstance().getDataSongs().values() ){
+                if (song.getTitle().toLowerCase().replace(" ", "").contains(inputTitleSong.toLowerCase().replace(" ", ""))){
+                    System.out.println(song);
+                }
+            }
+        }
+    }
 }
 
 

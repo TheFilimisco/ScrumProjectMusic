@@ -58,7 +58,7 @@ public class UserHistory {
     public void showFavoriteArtists(){
         List<Map.Entry<Artist,Integer>> newListArtists =new ArrayList<>(historyArtists.entrySet());
         newListArtists.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<Artist,Integer> entry: newListArtists){
+        for (Map.Entry<Artist,Integer> entry: newListArtists.reversed()){
             System.out.println(entry.getKey().getName() + ": You listened a song from this artist " + entry.getValue() + " times.");
         }
     }
@@ -66,7 +66,7 @@ public class UserHistory {
     public void showFavoriteGenres(){
         List<Map.Entry<Genre,Integer>> newListGenres =new ArrayList<>(historyGenres.entrySet());
         newListGenres.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<Genre,Integer> entry: newListGenres){
+        for (Map.Entry<Genre,Integer> entry: newListGenres.reversed()){
             System.out.println(entry.getKey().getName() + ":: You listened a song from this genre " + entry.getValue() + " times.");
         }
     }

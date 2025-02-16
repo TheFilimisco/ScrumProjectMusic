@@ -42,19 +42,19 @@ Additionally, data science techniques will be applied to analyze patterns in use
 #### MusicManager
 
 | Feature                | Description                                | Status   | Developer |
-|------------------------|--------------------------------------------|----------|----------- |
-| Access Admin Interface | Access member user to yourself profile     | Done     | Steven          |
-| Validate Song          | Validate song                              | Done     | Melina          |
-| Play Song              | Play song                                  | Done     | Melina          |
-| Pause Song             | Pause song                                 | Done     | Melina          |
-| Resume Song            | Resume song                                | Done     | Melina          |
-| Next Song              | Next song                                  | Done     | Melina          |
-| Previous Song          | Previous song                              | Done     | Melina          |
-| Search Song by Title   | Search by Title and return a Song          | Done     | Melina          |
-| Shows Songs By Genre   | Search by Genre and return a list of songs | Done     | Melina          |
-| Search By Artist       | Search by Artist and return a Songs        | Done     | Melina          |
-| Search By Release      | Search by range date and return Albums     | Done     | Melina          |
-| Real Time Search       | Search by different parameters             | to be Do |    -       |
+|------------------------|--------------------------------------------|----------|-----------|
+| Access Admin Interface | Access member user to yourself profile     | Done     | Steven    |
+| Validate Song          | Validate song                              | Done     | Melina    |
+| Play Song              | Play song                                  | Done     | Melina    |
+| Pause Song             | Pause song                                 | Done     | Melina    |
+| Resume Song            | Resume song                                | Done     | Melina    |
+| Next Song              | Next song                                  | Done     | Melina    |
+| Previous Song          | Previous song                              | Done     | Melina    |
+| Search Song by Title   | Search by Title and return a Song          | Done     | Melina    |
+| Shows Songs By Genre   | Search by Genre and return a list of songs | Done     | Melina    |
+| Search By Artist       | Search by Artist and return a Songs        | Done     | Melina    |
+| Search By Release      | Search by range date and return Albums     | Done     | Melina    |
+| Real Time Search       | Search by different parameters             | to be Do | Steven    |
 
 #### MemberProfileManager
 
@@ -82,8 +82,8 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### Song
 
-| Feature    | Description                 | Status | Developer |
-|------------|-----------------------------|--------|-----------| 
+| Feature    | Description                 | Status | Developer      |
+|------------|-----------------------------|--------|----------------| 
 | Data Class | generate instance DataSongs | Done   | Steven & Julia | 
 
 

@@ -5,7 +5,6 @@ import auth.Authentication;
 import java.util.*;
 
 import data.DataSongs;
-import management.MemberProfileManager;
 import management.MusicManager;
 import management.AdminManager;
 import model.song.Album;
@@ -17,7 +16,6 @@ import model.user.User;
 import model.user.AdminUser;
 import model.user.memberuser.MemberUser;
 
-import javax.lang.model.element.Element;
 import java.time.LocalDate;
 
 public class UI {
@@ -221,7 +219,7 @@ public class UI {
                     adminManager.showAllSongs();
                     break;
                 case 5:
-                    System.out.println("Back");
+                    System.out.println("Close...");
                     loop = false;
                     break;
                 default:
@@ -309,6 +307,7 @@ public class UI {
                     break;
                 case 6:
                     System.out.println("=================Real Time Song Search =============");
+                    musicManager.searchSongRealTime(sc);
                     break;
                 case 7:
                     System.out.println("Back");
@@ -365,25 +364,7 @@ public class UI {
         }
     }
 
-    private void ListSongs(ArrayList<Song> songs) {
-        songs.forEach(System.out::println);
-    }
-
-    private void ListAlbums(ArrayList<Album> albums) {
-        albums.forEach(System.out::println);
-    }
-
-    private void ListArtists(ArrayList<Artist> artists) {
-        artists.forEach(System.out::println);
-    }
-
-    private void ListGenres(ArrayList<Genre> genres) {
-        genres.forEach(System.out::println);
-    }
-
     private void profileLevel(Scanner sc, MemberUser user) {
-//        MemberProfileManager memberProfileManager = new MemberProfileManager();
-//        memberProfileManager.setUser(user);
         boolean loop = true;
         while (loop) {
             profileMenu();
@@ -412,17 +393,6 @@ public class UI {
                     System.out.println("Invalid option. Try again");
             }
         }
-    }
-
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Authentication auth = new Authentication();
-        MusicManager manager = new MusicManager();
-        AdminManager adminManager = new AdminManager();
-        UI ui = new UI();
-        auth.register(new MemberUser("Steven", LocalDate.now(), "nystepro@gmail.com", "123456Aa", "54910978L", "XD"));
-        ui.mainLevel(sc, auth, manager, adminManager);
     }
 
 }
