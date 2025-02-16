@@ -25,8 +25,8 @@ public class MusicManager {
 
     }
 
-    public void playSong(Song song) {
 
+    public void playSong(Song song) {
         StringBuilder output = new StringBuilder("Playing: " + song.getTitle() + "\n");
         for (int i = 1; i <= song.getDuration(); i++) {
             while (isPaused) {

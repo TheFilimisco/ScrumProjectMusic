@@ -115,7 +115,7 @@ public class UI {
     }
 
     //Works
-    public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager,AdminManager adminManager){
+    public void mainLevel(Scanner sc, Authentication auth, MusicManager musicManager, AdminManager adminManager){
         boolean loop = true;
         while (loop) {
             firstMenu();

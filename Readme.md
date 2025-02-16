@@ -13,17 +13,17 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 | Feature           | Description                      | Status |
 |-------------------|----------------------------------|--------|
-| Register          | Method void register (User user) | Doing  |
-| Login             | Method User login                | Doing  |
+| Register          | Method void register (User user) | Done   |
+| Login             | Method User login                | Done   |
 | Generate Nickname | Generate random nickname         | Done   |
 
 #### User
 
 | Feature       | Description                                              | Status |
 |---------------|----------------------------------------------------------|--------|
-| Guest_User    | Guest user access to Manager System                      | Doing  |
-| Admin_User    | Admin user access to Administrator Manager System        | Doing  |
-| Member_User   | Access to Manager System, but will have not manipulating | Doing  |
+| Guest_User    | Guest user access to Manager System                      | Done   |
+| Admin_User    | Admin user access to Administrator Manager System        | Done   |
+| Member_User   | Access to Manager System, but will have not manipulating | Done   |
 
 
 ### 2. Manager
@@ -31,11 +31,12 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### AdminManager
 
-| Feature     | Description    | Status    |
-|-------------|----------------|-----------|
-| Add Song    | Add new Songs  | to be Do  |
-| Add Artist  | Add new Artist | to be Do  |
-| Add Genre   | Add new Genre  | to be Do  |
+| Feature       | Description    | Status |
+|---------------|----------------|--------|
+| Add Song      | Add new Songs  | Done   |
+| Update Song   | Add new Artist | Done   |
+| Remove Song   | Add new Genre  | Done   |
+| Show All Song | Add new Genre  | Done   |
 
 
 #### MusicManager
@@ -55,7 +56,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | Search By Release      | Search by range date and return an Album   | Done     |
 | Real Time Search       | Search by different parameters             | to be Do |
 
-#### InterfaceMusicManager
+#### MemberProfileManager
 
 | Feature              | Description                      | Status   |
 |----------------------|----------------------------------|----------|
@@ -72,6 +73,15 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 #### Song
 
-| Feature           | Description                         | Status    |
-|-------------------|-------------------------------------|-----------|
-| Song Class        | To Make Class Song with composition | to be Do  |
+| Feature           | Description                         | Status |
+|-------------------|-------------------------------------|--------|
+| Song Class        | To Make Class Song with composition | Done   |
+
+### 4. DATA
+![Data](img/data.jpg)
+
+#### Song
+
+| Feature    | Description                 | Status |
+|------------|-----------------------------|--------|
+| Data Class | generate instance DataSongs | Done   |
