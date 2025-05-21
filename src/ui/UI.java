@@ -1,19 +1,19 @@
+/*
 package ui;
 
 import auth.Authentication;
 
 import java.util.*;
 
-import data.DataSongs;
 import management.MusicManager;
 import management.AdminManager;
-import model.song.Album;
-import model.song.Genre;
-import model.song.Song;
-import model.user.GuestUser;
-import model.user.User;
-import model.user.AdminUser;
-import model.user.memberuser.MemberUser;
+import models.song.Album;
+import models.song.Genre;
+import models.song.Song;
+import models.user.GuestUser;
+import models.user.User;
+import models.user.AdminUser;
+import models.user.memberuser.MemberUser;
 
 import java.time.LocalDate;
 
@@ -402,3 +402,4 @@ public class UI {
     }
 
 }
+*/

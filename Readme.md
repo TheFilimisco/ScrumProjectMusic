@@ -1,7 +1,7 @@
 # Music Recommender System
 
 ## Introduction
-The application will manage a detailed data model with users, songs, artists, genres, and listening sessions. 
+The application will manage a detailed data models with users, songs, artists, genres, and listening sessions. 
 Additionally, data science techniques will be applied to analyze patterns in user preferences and audio data, offering a robust recommendation engine.
 
 ### Features

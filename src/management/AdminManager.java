@@ -1,13 +1,7 @@
+/*
 package management;
 
-import data.DataSongs;
-import model.song.*;
-import model.user.AdminUser;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import models.song.*;
 
 public class AdminManager {
 
@@ -50,3 +44,4 @@ public class AdminManager {
     }
 
 }
+*/

@@ -1,4 +1,4 @@
-package model.song;
+package models.song;
 
 public enum Country{
     AFGHANISTAN,
