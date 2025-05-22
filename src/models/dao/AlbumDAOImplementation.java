@@ -1,5 +1,6 @@
-package dao;
+package models.dao;
 
+import models.dao.interfaces.GenericDAO;
 import db.SQLiteConnector;
 import models.song.Album;
 
@@ -7,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumDAOImplementation implements GenericDao<Album> {
+public class AlbumDAOImplementation implements GenericDAO<Album> {
 
     static Connection conn = SQLiteConnector.getConnection();
 

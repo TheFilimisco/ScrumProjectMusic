@@ -32,6 +32,6 @@ public class Guest extends User {
                 ", dni='" + dni + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", guestCode='" + guestCode + '\'' +
-                "} " + super.toString();
+                "} ";
     }
 }

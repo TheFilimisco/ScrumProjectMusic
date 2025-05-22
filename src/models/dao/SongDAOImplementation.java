@@ -1,5 +1,6 @@
-package dao;
+package models.dao;
 
+import models.dao.interfaces.GenericDAO;
 import db.SQLiteConnector;
 import models.song.Album;
 import models.song.Artist;
@@ -13,12 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongDAOImplementation implements GenericDao<Song> {
+public class SongDAOImplementation implements GenericDAO<Song> {
 
     static Connection conn = SQLiteConnector.getConnection();
-    GenericDao<Artist> artistDAO = new ArtistDAOImplementation();
-    GenericDao<Genre> genreDAO = new GenreDAOImplementation();
-    GenericDao<Album> albumDAO = new AlbumDAOImplementation();
+    GenericDAO<Artist> artistDAO = new ArtistDAOImplementation();
+    GenericDAO<Genre> genreDAO = new GenreDAOImplementation();
+    GenericDAO<Album> albumDAO = new AlbumDAOImplementation();
 
     @Override
     public Integer createItem(Song song) throws SQLException {

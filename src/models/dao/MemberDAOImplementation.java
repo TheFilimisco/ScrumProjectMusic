@@ -1,5 +1,6 @@
-package dao;
+package models.dao;
 
+import models.dao.interfaces.GenericDAO;
 import db.SQLiteConnector;
 import models.user.Member;
 
@@ -11,29 +12,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberDAOImplementation implements  GenericDao<Member> {
+public class MemberDAOImplementation extends UserDAOImplementation implements GenericDAO<Member> {
     static Connection conn = SQLiteConnector.getConnection();
 
     @Override
     public Integer createItem(Member member) throws SQLException {
-        String query = "INSERT INTO USERS(name_user,date_birth,email,password,dni,nickname) VALUES (?,?,?,?,?,?)";
+        Integer userId = createUser(member);
+        String query = "INSERT INTO MEMBERS(id_member) VALUES (?)";
         PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, member.getNameUser());
-        ps.setString(2, member.getDateBirth().toString());
-        ps.setString(3, member.getEmail());
-        ps.setString(4, member.getPassword());
-        ps.setString(5, member.getDni());
-        ps.setString(6, member.getNickName());
+        ps.setInt(1, userId);
         ps.executeUpdate();
-        ResultSet rs = ps.getGeneratedKeys();
-        rs.next();
-        String query2 = "INSERT INTO MEMBERS(id_member) VALUES (?)";
-        PreparedStatement ps2 = conn.prepareStatement(query2);
-        ps2.setInt(1, rs.getInt(1));
-        ps2.executeUpdate();
-        rs = ps2.getGeneratedKeys();
-        rs.next();
-        return rs.getInt(1);
+        return userId;
     }
 
     @Override
@@ -80,25 +69,7 @@ public class MemberDAOImplementation implements  GenericDao<Member> {
 
     @Override
     public void updateItem(Member member) throws SQLException {
-        String query = "UPDATE USERS\n" +
-                "SET\n" +
-                "    name_user = ?,\n" +
-                "    date_birth = ?,\n" +
-                "    email = ?,\n" +
-                "    password = ?,\n" +
-                "    dni = ?,\n" +
-                "    nickname = ?\n" +
-                "WHERE id_user = ?";
-        PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, member.getNameUser());
-        ps.setString(2, member.getDateBirth().toString());
-        ps.setString(3, member.getEmail());
-        ps.setString(4, member.getPassword());
-        ps.setString(5, member.getDni());
-        ps.setString(6, member.getNickName());
-        ps.setInt(7, member.getIdUser());
-        ps.executeUpdate();
-        System.out.println("Member updated");
+        updateUser(member);
     }
 
     @Override

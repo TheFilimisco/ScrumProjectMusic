@@ -32,6 +32,6 @@ public class Admin extends User{
                 ", dni='" + dni + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", accessLevel='" + accessLevel + '\'' +
-                "} " + super.toString();
+                "} ";
     }
 }

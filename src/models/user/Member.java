@@ -19,6 +19,6 @@ public class Member extends User {
                 ", password='" + password + '\'' +
                 ", dni='" + dni + '\'' +
                 ", nickName='" + nickName + '\'' +
-                "} " + super.toString();
+                "} ";
     }
 }
