@@ -2,15 +2,14 @@ package auth.controller;
 
 
 import auth.service.AuthService;
-import models.user.Member;
 
 import java.sql.SQLException;
 
 public class AuthController {
     private final AuthService authService;
 
-    public AuthController(AuthService authService) {
-        this.authService = authService;
+    public AuthController() {
+        this.authService = new AuthService();
     }
 
     public boolean login(String email, String password) throws SQLException {
