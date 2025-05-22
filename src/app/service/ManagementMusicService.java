@@ -8,8 +8,4 @@ import java.util.List;
 
 public class ManagementMusicService extends ManagementMusicDAOImplementation {
 
-    public List<Song> searchSongByTitle(String title) throws SQLException {
-        return searchSongByTitle(title);
-    }
-
 }

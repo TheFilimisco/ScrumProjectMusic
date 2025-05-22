@@ -56,8 +56,7 @@ public class TestMusicApp {
                     // Login
                    /* System.out.println(authController.login("laura.gomez@example.com","pass1234434"));*/
                     // Register
-                    System.out.println(authController.register("nystepro@gmail.com", "password12345"));
-
+                    /*System.out.println(authController.register("nystepro@gmail.com", "password12345"));*/
                     break;
                 }
                 case 2:{
