@@ -1,3 +1,4 @@
+import auth.controller.AuthController;
 import models.dao.*;
 import models.dao.interfaces.GenericDAO;
 import db.SQLiteConnector;
@@ -39,6 +40,8 @@ public class TestMusicApp {
         GenericDAO<Admin> adminDAO = new AdminDAOImplementation();
         GenericDAO<Guest> guestDAO = new GuestDAOImplementation();
 
+        AuthController authController = new AuthController();
+
         while (opcio!=0){
             switch(opcio){
                 case 1: {
@@ -48,19 +51,25 @@ public class TestMusicApp {
                    /* songDAO.getItems().forEach(System.out::println);*/
                     /*memberDAO.getItems().forEach(System.out::println);*/
                     /*adminDAO.getItems().forEach(System.out::println);*/
-                    guestDAO.getItems().forEach(System.out::println);
+                    /*guestDAO.getItems().forEach(System.out::println);*/
+                    // Testing Auth
+                    // Login
+                   /* System.out.println(authController.login("laura.gomez@example.com","pass1234434"));*/
+                    // Register
+                    System.out.println(authController.register("nystepro@gmail.com", "password12345"));
+
                     break;
                 }
                 case 2:{
-                    System.out.println("Put a Id valid:");
-                    Integer id = sc.nextInt();
+                    /*System.out.println("Put a Id valid:");
+                    Integer id = sc.nextInt();*/
                     /*System.out.println(artistDAO.readItem(id));*/
                    /* System.out.println(albumDAO.readItem(idAlbum));*/
                     /*System.out.println(genreDAO.readItem(id));*/
                    /* System.out.println(songDAO.readItem(id));*/
                     /*System.out.println(memberDAO.readItem(id));*/
                     /*System.out.println(adminDAO.readItem(id));*/
-                    System.out.println(guestDAO.readItem(id));
+                    /*System.out.println(guestDAO.readItem(id));*/
                     break;
                 }
                 case 3:{
@@ -70,7 +79,7 @@ public class TestMusicApp {
                     /*System.out.println(songDAO.createItem(new Song(0, "dummy Song", 300, 2, 2, 2)));*/
                     /*System.out.println(memberDAO.createItem(new Member(0,"dummy Member User", LocalDate.now(), "dummy@gmail.com","1234","asdasda","asdsad")));*/
                     /*System.out.println(adminDAO.createItem(new Admin(0,"dummy Admin", LocalDate.now(), "dummyAdminCreate@gmail.com","1234","2323DADAS","nickNameAdmin","ADMIN")));*/
-                    System.out.println(guestDAO.createItem(new Guest(0,"", LocalDate.now(), null,"",null,null,"GUESTCODE4")));
+                    /*System.out.println(guestDAO.createItem(new Guest(0,"", LocalDate.now(), null,"",null,null,"GUESTCODE4")));*/
                     break;
                 }
                 case 4:{
@@ -80,7 +89,7 @@ public class TestMusicApp {
                     /*songDAO.updateItem(new Song(1, "dummy Song update", 301, 1, 1, 1));*/
                     /*memberDAO.updateItem(new Member(5,"dummy Member User edited", LocalDate.now(), "asdasdadas@gmail.com","asdsad","asdasdasdsadasdadsa","ASDASDASDASDSA"));*/
                     /*adminDAO.updateItem(new Admin(7,"dummy Admin Updated", LocalDate.now(), "12d1dasda@gmail.com","1234","121DSADAD","NewNicnameCreated","READ"));*/
-                    guestDAO.updateItem(new Guest(10,"Guest Updated", LocalDate.now(), "Guestupdated@gmail.com","1233234","GUESDNIUpdated","GUESTnicknameUpdated","GUESTCODE2"));
+                    /*guestDAO.updateItem(new Guest(10,"Guest Updated", LocalDate.now(), "Guestupdated@gmail.com","1233234","GUESDNIUpdated","GUESTnicknameUpdated","GUESTCODE2"));*/
                     break;
                 }
                 case 5:{
@@ -90,7 +99,7 @@ public class TestMusicApp {
                    /* songDAO.deleteItem(1);*/
                     /*memberDAO.deleteItem(5);*/
                    /* adminDAO.deleteItem(7);*/
-                    guestDAO.deleteItem(10);
+                   /* guestDAO.deleteItem(10);*/
                     break;
                 }
                 case 0:{

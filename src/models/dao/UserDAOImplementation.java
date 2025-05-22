@@ -17,7 +17,7 @@ public abstract class UserDAOImplementation implements UserDAO {
         String query = "INSERT INTO USERS(name_user,date_birth,email,password,dni,nickname) VALUES (?,?,?,?,?,?)";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, user.getNameUser());
-        ps.setString(2, user.getDateBirth().toString());
+        ps.setString(2, user.getDateBirth() != null ? user.getDateBirth().toString() : null );
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getPassword());
         ps.setString(5, user.getDni());
