@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ManagementMusicDAOImplementation implements ManagementMusicDAO {
+public class ManagementMusicDAOImplementation implements ManagementMusicDAO {
     static Connection conn = SQLiteConnector.getConnection();
     GenericDAO<Artist> artistDAO = new ArtistDAOImplementation();
     GenericDAO<Genre> genreDAO = new GenreDAOImplementation();
