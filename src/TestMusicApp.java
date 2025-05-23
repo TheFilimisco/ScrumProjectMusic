@@ -1,3 +1,4 @@
+import app.service.ManagementMusicService;
 import auth.controller.AuthController;
 import models.dao.*;
 import models.dao.interfaces.GenericDAO;
@@ -40,6 +41,7 @@ public class TestMusicApp {
         GenericDAO<Member> memberDAO = new MemberDAOImplementation();
         GenericDAO<Admin> adminDAO = new AdminDAOImplementation();
         GenericDAO<Guest> guestDAO = new GuestDAOImplementation();
+        ManagementMusicService musicService = new ManagementMusicService();
 
         AuthController authController = new AuthController();
         ProfileController profileController = new ProfileController();
