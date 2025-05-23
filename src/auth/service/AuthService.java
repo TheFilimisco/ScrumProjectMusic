@@ -1,6 +1,7 @@
 package auth.service;
 
 import auth.dao.AuthDAOImplementation;
+import auth.utils.AuthDTO;
 import models.dao.MemberDAOImplementation;
 import models.dao.interfaces.GenericDAO;
 import models.user.Member;
@@ -9,22 +10,22 @@ import java.sql.SQLException;
 
 public class AuthService extends AuthDAOImplementation {
 
-    public boolean login(String email, String password) throws SQLException {
-        Member member = findByEmail(email);
+    public boolean login(AuthDTO authDTO) throws SQLException {
+        Member member = findByEmail(authDTO.getEmail());
         if (member == null) {
             return false;
         }
-        if (!member.getPassword().equals(password)) {
+        if (!member.getPassword().equals(authDTO.getPassword())) {
             return false;
         }
         return true;
     };
 
-    public boolean register(String email, String password) throws SQLException {
+    public boolean register(AuthDTO authDTO) throws SQLException {
         GenericDAO<Member> memberDAO = new MemberDAOImplementation();
-        Member member = findByEmail(email);
+        Member member = findByEmail(authDTO.getEmail());
         if (member == null) {
-            memberDAO.createItem(new Member(0,null,null,email,password,null,null));
+            memberDAO.createItem(new Member(0,null,null,authDTO.getEmail(), authDTO.getPassword(), null,null));
             return true;
         }
         return false;

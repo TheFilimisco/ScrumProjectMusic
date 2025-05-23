@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public abstract class MediaPlayerDAOImplementation implements MediaPlayerHistoryDAO {
+public  class MediaPlayerDAOImplementation implements MediaPlayerHistoryDAO {
     static Connection conn = SQLiteConnector.getConnection();
 
     @Override

@@ -15,6 +15,7 @@ public abstract class AuthDAOImplementation implements AuthDAO {
     @Override
     public Member findByEmail(String email) throws SQLException {
         String query = "SELECT " +
+                "M.id_member AS idMember, " +
                 "U.email AS emailDB, " +
                 "U.password AS password " +
                 "FROM USERS U JOIN MEMBERS M ON (U.id_user = M.id_member) " +
@@ -24,6 +25,7 @@ public abstract class AuthDAOImplementation implements AuthDAO {
         ResultSet rs = ps.executeQuery();
         Member member = new Member();
         if (rs.next()) {
+            member.setIdUser(rs.getInt("idMember"));
             member.setEmail(rs.getString("emailDB"));
             member.setPassword(rs.getString("password"));
         }

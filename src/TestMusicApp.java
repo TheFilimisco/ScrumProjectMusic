@@ -6,6 +6,7 @@ import models.song.*;
 import models.user.Admin;
 import models.user.Guest;
 import models.user.Member;
+import profile.controller.ProfileController;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -41,6 +42,8 @@ public class TestMusicApp {
         GenericDAO<Guest> guestDAO = new GuestDAOImplementation();
 
         AuthController authController = new AuthController();
+        ProfileController profileController = new ProfileController();
+
 
         while (opcio!=0){
             switch(opcio){
@@ -57,6 +60,16 @@ public class TestMusicApp {
                    /* System.out.println(authController.login("laura.gomez@example.com","pass1234434"));*/
                     // Register
                     /*System.out.println(authController.register("nystepro@gmail.com", "password12345"));*/
+
+
+                    // Testing Profile
+                    /*Member member = new Member();
+                    member.setIdUser(1);*/
+                    /*profileController.getHistoryProfile(member).forEach(System.out::println);*/
+                    /*profileController.getProfile(member);*/
+                    /*member.setNameUser("Changed a Name");
+                    profileController.addInformationProfile(member);*/
+                    /*profileController.*/
                     break;
                 }
                 case 2:{
