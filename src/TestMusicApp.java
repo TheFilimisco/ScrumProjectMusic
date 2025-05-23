@@ -1,4 +1,5 @@
-import app.service.ManagementMusicService;
+import app.controller.AppMusicController;
+import app.service.ManagementAppMusicService;
 import auth.controller.AuthController;
 import models.dao.*;
 import models.dao.interfaces.GenericDAO;
@@ -11,7 +12,6 @@ import profile.controller.ProfileController;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class TestMusicApp {
@@ -41,10 +41,12 @@ public class TestMusicApp {
         GenericDAO<Member> memberDAO = new MemberDAOImplementation();
         GenericDAO<Admin> adminDAO = new AdminDAOImplementation();
         GenericDAO<Guest> guestDAO = new GuestDAOImplementation();
-        ManagementMusicService musicService = new ManagementMusicService();
+        ManagementAppMusicService musicService = new ManagementAppMusicService();
 
         AuthController authController = new AuthController();
         ProfileController profileController = new ProfileController();
+        AppMusicController appMusicController = new AppMusicController();
+
 
 
         while (opcio!=0){
@@ -64,6 +66,8 @@ public class TestMusicApp {
                     /*System.out.println(authController.register("nystepro@gmail.com", "password12345"));*/
 
 
+
+
                     // Testing Profile
                     /*Member member = new Member();
                     member.setIdUser(1);*/
@@ -72,6 +76,15 @@ public class TestMusicApp {
                     /*member.setNameUser("Changed a Name");
                     profileController.addInformationProfile(member);*/
                     /*profileController.*/
+
+                    // Controller App
+                    /*appMusicController.findSongByYear("1982");*/
+                    appMusicController.findSongByTitle("Beat");
+                    /*appMusicController.findSongByAlbum("Thriller");
+                    appMusicController.findSongByGenre("Pop");
+                    appMusicController.findSongByArtist("Nirvana");*/
+
+
                     break;
                 }
                 case 2:{

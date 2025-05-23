@@ -9,15 +9,12 @@ import models.song.Album;
 import models.song.Artist;
 import models.song.Genre;
 import models.song.Song;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
+public abstract class ManagementMusicDAOImplementation implements ManagementMusicDAO {
     static Connection conn = SQLiteConnector.getConnection();
     GenericDAO<Artist> artistDAO = new ArtistDAOImplementation();
     GenericDAO<Genre> genreDAO = new GenreDAOImplementation();
@@ -25,8 +22,9 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
 
     @Override
     public List<Song> searchSongByTitle(String title) throws SQLException {
-        String query = "SELECT * FROM song WHERE title_song LIKE '%" + title + "%'";
+        String query = "SELECT * FROM SONGS WHERE title_song LIKE ?";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, "%" + title + "%");
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {
@@ -48,8 +46,9 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
     @Override
     public List<Song> searchSongByArtist(String artist) throws SQLException {
         String query = "SELECT S.* FROM SONGS S JOIN ARTISTS A ON (S.artist_id = A.id_artist)\n" +
-                "WHERE name_artist LIKE  '%" + artist + "%'";
+                "WHERE A.name_artist LIKE ?";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, "%" + artist + "%");
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {
@@ -71,8 +70,9 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
     @Override
     public List<Song> searchSongByAlbum(String album) throws SQLException {
         String query = "SELECT S.* FROM SONGS S JOIN ALBUMS A ON (S.album_id = A.id_album)\n" +
-                "WHERE name_album LIKE  '%" + album + "%'";
+                "WHERE name_album LIKE ?";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, "%" + album + "%");
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {
@@ -96,6 +96,7 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
         String query = "SELECT S.* FROM SONGS S JOIN GENRES G ON (S.genre_id = G.id_genre)\n" +
                 "WHERE name_genre LIKE  '%" + genre + "%'";
         PreparedStatement ps = conn.prepareStatement(query);
+
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {
@@ -115,10 +116,13 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
     }
 
     @Override
-    public List<Song> searchSongByYear(int year) throws SQLException {
-        String query = "SELECT S.* FROM SONGS S JOIN ALBUMS A ON (S.album_id = A.id_album)\n" +
-                "WHERE name_album LIKE ";
+    public List<Song> searchSongByYear(String year) throws SQLException {
+        String query = "SELECT S.* " +
+                "FROM SONGS S JOIN ALBUMS A " +
+                "ON (S.album_id = A.id_album) " +
+                "WHERE strftime('%Y', A.releaseDate) = ?";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, year);
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {
@@ -135,5 +139,16 @@ public  class ManagementMusicDAOImplementation implements ManagementMusicDAO {
             return null;
         }
         return songs;
+    }
+
+    @Override
+    public void saveSongToHistory(LocalDateTime dateListened, Integer songId, Integer memberId) throws SQLException {
+        String query = "INSERT INTO LISTENING_HISTORY (date_listened, song_id, member_id) " +
+                "VALUES (?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setTimestamp(1, Timestamp.valueOf(dateListened));
+        ps.setInt(2, songId);
+        ps.setInt(3, memberId);
+        ps.executeUpdate();
     }
 }
