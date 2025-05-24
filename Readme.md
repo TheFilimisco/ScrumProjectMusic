@@ -9,6 +9,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 ### 1. Authentication
 
 #### Auth
+**Important disclaimer: If the user does not input anything when logging in, he will be automatically considered a unregistered member, therefore the user will not be able to acccess it's profile and the music history functionality will be disabled.**
 
 | Feature           | Description                      | Status | Developer |
 |-------------------|----------------------------------|--------|-----------|

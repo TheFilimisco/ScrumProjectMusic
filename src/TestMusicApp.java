@@ -19,11 +19,11 @@ public class TestMusicApp {
     public static void menu(){
         System.out.println("=================Menu=============\n"
                 + "1) Get Items\n"
-                + "2) Get a Just Item\n"
-                + "3) Create a new Item\n"
-                + "4) Update a Item\n"
-                + "5) Delete a Item\n"
-                + "0) Close\n"
+                + "2) Get one item \n"
+                + "3) Create a new item\n"
+                + "4) Update an item\n"
+                + "5) Delete an item\n"
+                + "0) Exit program\n"
                 + "============================================\n"
                 + "Select a Option:\n"
         );
