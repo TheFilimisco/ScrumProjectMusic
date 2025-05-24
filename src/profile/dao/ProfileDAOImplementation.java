@@ -8,8 +8,6 @@ import models.song.Artist;
 import models.song.Genre;
 import models.song.Song;
 import models.user.Member;
-import org.ietf.jgss.GSSName;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +15,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileDAOImplementation implements ProfileDAO {
+public abstract class ProfileDAOImplementation implements ProfileDAO {
 
     static Connection conn = SQLiteConnector.getConnection();
     GenericDAO<Member> memberDAO = new MemberDAOImplementation();
     GenericDAO<Artist> artistDAO = new ArtistDAOImplementation();
     GenericDAO<Genre> genreDAO = new GenreDAOImplementation();
     GenericDAO<Album> albumDAO = new AlbumDAOImplementation();
+
+    @Override
+    public Member validateProfile(Integer idMember) throws SQLException {
+        return memberDAO.readItem(idMember);
+    }
 
     @Override
     public void updateInformationProfile(Member member) throws SQLException {

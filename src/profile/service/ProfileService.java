@@ -12,7 +12,18 @@ import java.util.List;
 
 public class ProfileService extends ProfileDAOImplementation {
 
-    GenericDAO<Member> memberDAO = new MemberDAOImplementation();
+    public Member getValidatedProfile(Integer idMember) throws SQLException {
+        if (idMember == null) {
+            System.out.println("This user is not logged in");
+            return null;
+        }
+        try {
+            return validateProfile(idMember);
+        } catch (SQLException e) {
+            System.out.println("Error in validating profile");
+            return null;
+        }
+    }
 
     public void addInformationProfile(Member member) throws SQLException {
         updateInformationProfile(member);
@@ -29,6 +40,6 @@ public class ProfileService extends ProfileDAOImplementation {
     }
 
     public void getInformationProfile(Member member) throws SQLException {
-        System.out.println(memberDAO.readItem(member.getIdUser()));
+        System.out.println(member);
     }
 }

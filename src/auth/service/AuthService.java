@@ -9,6 +9,7 @@ import models.user.Member;
 import java.sql.SQLException;
 
 public class AuthService extends AuthDAOImplementation {
+    private Integer loggedUserId;
 
     public boolean login(AuthDTO authDTO) throws SQLException {
         Member member = findByEmail(authDTO.getEmail());
@@ -18,8 +19,9 @@ public class AuthService extends AuthDAOImplementation {
         if (!member.getPassword().equals(authDTO.getPassword())) {
             return false;
         }
+        loggedUserId = member.getIdUser();
         return true;
-    };
+    }
 
     public boolean register(AuthDTO authDTO) throws SQLException {
         GenericDAO<Member> memberDAO = new MemberDAOImplementation();
@@ -31,5 +33,7 @@ public class AuthService extends AuthDAOImplementation {
         return false;
     }
 
-
+    public Integer getLoggedUserId() {
+        return loggedUserId;
+    }
 }

@@ -79,10 +79,17 @@ public class TestMusicApp {
 
                     // Controller App
                     /*appMusicController.findSongByYear("1982");*/
-                    appMusicController.findSongByTitle("Beat");
-                    /*appMusicController.findSongByAlbum("Thriller");
+                    /*appMusicController.findSongByTitle("Beat");
+                    appMusicController.findSongByAlbum("Thriller");
                     appMusicController.findSongByGenre("Pop");
                     appMusicController.findSongByArtist("Nirvana");*/
+
+
+/*                    Member member = memberDAO.readItem(12);
+                    Song song = songDAO.readItem(10);
+                    System.out.println(member);
+                    System.out.println(song);
+                    appMusicController.playSong(member,song);*/
 
 
                     break;

@@ -55,7 +55,7 @@ public class MemberDAOImplementation extends UserDAOImplementation implements Ge
             found = true;
             member.setIdUser(rs.getInt("idMember"));
             member.setNameUser(rs.getString("nameUser"));
-            member.setDateBirth(LocalDate.parse(rs.getString("dateBirth")));
+            member.setDateBirth(member.getDateBirth() != null ? LocalDate.parse(member.getDateBirth().toString()) : null );
             member.setEmail(rs.getString("email"));
             member.setPassword(rs.getString("password"));
             member.setDni(rs.getString("dni"));

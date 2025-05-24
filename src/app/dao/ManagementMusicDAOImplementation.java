@@ -94,9 +94,9 @@ public abstract class ManagementMusicDAOImplementation implements ManagementMusi
     @Override
     public List<Song> searchSongByGenre(String genre) throws SQLException {
         String query = "SELECT S.* FROM SONGS S JOIN GENRES G ON (S.genre_id = G.id_genre)\n" +
-                "WHERE name_genre LIKE  '%" + genre + "%'";
+                "WHERE name_genre LIKE ?";
         PreparedStatement ps = conn.prepareStatement(query);
-
+        ps.setString(1, "%" + genre + "%");
         ResultSet rs = ps.executeQuery();
         List<Song> songs = new ArrayList<>();
         while (rs.next()) {

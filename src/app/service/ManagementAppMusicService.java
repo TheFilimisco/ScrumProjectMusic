@@ -1,6 +1,8 @@
 package app.service;
 
 import app.dao.ManagementMusicDAOImplementation;
+import app.utils.SongQueueManager;
+import models.dao.MemberDAOImplementation;
 import models.dao.SongDAOImplementation;
 import models.dao.interfaces.GenericDAO;
 import models.song.Song;
@@ -11,43 +13,92 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ManagementAppMusicService extends ManagementMusicDAOImplementation {
-    private static Integer pointerMusic;
-    private static Integer elapsedTime;
-    private static boolean isPaused;
-    private static boolean isPlaying;
+    private static Integer elapsedTime = 0;
+    private static boolean isPaused = false;
+    private static boolean isPlaying = false;
     private static Thread timeThread;
+    private Integer idMember;
+
+    public ManagementAppMusicService(Integer idMember) {
+        this.idMember = idMember;
+    }
+
+    public ManagementAppMusicService() {
+        idMember = null;
+    }
+
+    public Integer getIdMember() {
+        return idMember;
+    }
+
+    public void setIdMember(Integer idMember) {
+        this.idMember = idMember;
+    }
 
     GenericDAO<Song> songDAO = new SongDAOImplementation();
+    GenericDAO<Member> memberDAO = new MemberDAOImplementation();
+    private final SongQueueManager queueManager = new SongQueueManager(songDAO);
+
+    public void playSong(Song song) throws SQLException {
+        if (song == null) {
+            queueManager.loadSongsOfDB();
+            playCurrentSong();
+            return;
+        }
+        queueManager.loadSingleSong(song);
+        playCurrentSong();
+    }
 
 
-    public void playSong (Member member, Song song) throws SQLException{
-        isPaused = false;
+    private void playCurrentSong () throws SQLException{
+        Member member = memberDAO.readItem(idMember);
+        Song currentSong = queueManager.getCurrentSong();
+        if (currentSong == null) {
+            System.out.println("No song found");
+            return;
+        }
         isPlaying = true;
-        pointerMusic = song.getIdSong();
+        elapsedTime = 0;
 
         // Save History
-        saveSongToHistory(LocalDateTime.now(), song.getIdSong(), member.getIdUser());
+        saveSongToHistory(LocalDateTime.now(), currentSong.getIdSong(), member.getIdUser());
 
-        System.out.println("Playing song -" + song.getTitleSong());
+        System.out.println("Playing song -" + currentSong.getTitleSong());
         timeThread = new Thread(() -> {
-            while (isPlaying && elapsedTime < song.getDuration()) {
-                if (isPaused) {
+            while (isPlaying && elapsedTime < currentSong.getDuration()) {
+                if (!isPaused) {
                     try {
                         Thread.sleep(1000);
                         elapsedTime++;
-                        System.out.println("Current time: " + elapsedTime + "s");
+                        System.out.println("Song listening: " + elapsedTime + "s");
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                         System.out.println("Playing thread interrupted");
                     }
                 }
             }
-            if (elapsedTime >= song.getDuration()) {
+            if (elapsedTime >= currentSong.getDuration()) {
                 System.out.println("Song finished");
-                isPlaying = false;
+                try {
+                    nextSong();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e.getCause());
+                }
             }
         });
         timeThread.start();
+    }
+
+    public void nextSong () throws SQLException{
+        stopCurrentThread();
+        queueManager.nextSong();
+        playCurrentSong();
+    }
+
+    public void previousSong () throws SQLException{
+        stopCurrentThread();
+        queueManager.previousSong();
+        playCurrentSong();
     }
 
     public void pauseSong (Song song) {
@@ -55,46 +106,20 @@ public class ManagementAppMusicService extends ManagementMusicDAOImplementation 
         System.out.println(song.getTitleSong() + " was paused at " + elapsedTime + " seconds...\n");
     }
 
-    public void resumeSong (Member member, Song song) throws SQLException {
+    public void resumeSong () throws SQLException {
         if (isPaused && !isPlaying) {
             isPaused = false;
-            isPlaying = true;
-            System.out.println("Resuming: " + song.getTitleSong());
-
-            playSong(member,song); // Back to thread where it stayed
+            playCurrentSong();
         }
     }
 
-    public void nextSong (Member member) throws SQLException{
+    private void stopCurrentThread() {
         isPlaying = false;
         isPaused = false;
-        elapsedTime = 0;
-
         if (timeThread != null && timeThread.isAlive()) {
             timeThread.interrupt();
         }
-
-        pointerMusic++;
-        Song nextSong = songDAO.readItem(pointerMusic);
-        playSong(member,nextSong);
-
     }
-
-    public void previousSong (Member member) throws SQLException{
-        isPlaying = false;
-        isPaused = false;
-        elapsedTime = 0;
-
-        if (timeThread != null && timeThread.isAlive()) {
-            timeThread.interrupt();
-        }
-
-        pointerMusic--;
-        Song previousSong = songDAO.readItem(pointerMusic);
-        playSong(member,previousSong);
-
-    }
-
 
     public void findSongByTitle (String title) throws SQLException{
         List<Song> songs = searchSongByTitle(title);

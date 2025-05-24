@@ -10,27 +10,27 @@ public class AppMusicController {
     private final ManagementAppMusicService appMusicService;
 
     public AppMusicController() {
-        appMusicService = new ManagementAppMusicService();
+        this.appMusicService = new ManagementAppMusicService();
     }
 
-    public void playSong(Member member, Song song) throws SQLException {
-        appMusicService.playSong(member,song);
+    public void playSong(Song song) throws SQLException {
+        appMusicService.playSong(song);
     }
 
     public void pauseSong(Member member, Song song) throws SQLException {
         appMusicService.pauseSong(song);
     }
 
-    public void stopSong(Member member, Song song) throws SQLException {
-        appMusicService.resumeSong(member,song);
+    public void stopSong() throws SQLException {
+        appMusicService.resumeSong();
     }
 
-    public void nextSong(Member member) throws SQLException {
-        appMusicService.nextSong(member);
+    public void nextSong() throws SQLException {
+        appMusicService.nextSong();
     }
 
-    public void previousSong(Member member) throws SQLException {
-        appMusicService.previousSong(member);
+    public void previousSong() throws SQLException {
+        appMusicService.previousSong();
     }
 
     public void findSongByTitle(String title) throws SQLException {

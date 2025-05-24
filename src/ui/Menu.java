@@ -19,9 +19,8 @@ public class Menu {
                                 2. Search Songs by Title
                                 3. Search Songs by Genre
                                 4. Search Songs by Artist
-                                5. Search Songs by Date(YYY-mm-dd)
-                                6. Real-Time Song Search
-                                7. Back
+                                5. Search Songs by Year
+                                6. Back
                 ================================================================
                 """);
     }
@@ -42,14 +41,13 @@ public class Menu {
     public void profile() {
         System.out.println("""
                 =========================Profile Menu===============================
-                                1. Show Top Songs
-                                2. Show Top Albums
-                                3. Show Top Artists
-                                4. Show Top Genres
+                                1. Profile Information
+                                2. Add Information Profile
+                                3. Update Information Profile
+                                4. My History
                                 5. Back
                 ====================================================================
                 """);
-
     }
 
     public void MediaPlayer() {

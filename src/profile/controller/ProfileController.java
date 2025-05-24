@@ -14,6 +14,14 @@ public class ProfileController {
         profileService = new ProfileService();
     }
 
+    public Member getValidatedProfile(Integer idMember) throws SQLException {
+        Member member = profileService.getValidatedProfile(idMember);
+        if (member == null) {
+            System.out.println("Please login first or check your session");
+        }
+        return member;
+    }
+
     public void getProfile(Member member) throws SQLException {
         profileService.getInformationProfile(member);
     }
@@ -29,8 +37,6 @@ public class ProfileController {
     public List<Song> getHistoryProfile(Member member) throws SQLException{
         return profileService.getHistoryProfile(member);
     }
-
-
 
 
 }
