@@ -19,22 +19,10 @@ public class Menu {
                                 2. Search Songs by Title
                                 3. Search Songs by Genre
                                 4. Search Songs by Artist
-                                5. Search Songs by Year
-                                6. Back
+                                5. Search Songs by Album
+                                6. Search Songs by Year
+                                7. Back
                 ================================================================
-                """);
-    }
-
-
-    public void admin() {
-        System.out.println("""
-                =============================Admin Manager Menu============================
-                                1.Add song
-                                2.Update song
-                                3.Remove song
-                                4.Show All song
-                                5. Back
-                ===========================================================================
                 """);
     }
 
@@ -50,7 +38,7 @@ public class Menu {
                 """);
     }
 
-    public void MediaPlayer() {
+    public void mediaPlayer() {
         System.out.println("""
                 =========================Song Menu===============================
                                 1. Play song
@@ -62,6 +50,18 @@ public class Menu {
                 ==================================================================
                 """);
 
+    }
+
+    public void admin() {
+        System.out.println("""
+                =============================Admin Manager Menu============================
+                                1.Add song
+                                2.Update song
+                                3.Remove song
+                                4.Show All song
+                                5. Back
+                ===========================================================================
+                """);
     }
 
 }

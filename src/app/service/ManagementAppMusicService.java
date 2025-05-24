@@ -51,7 +51,6 @@ public class ManagementAppMusicService extends ManagementMusicDAOImplementation 
 
 
     private void playCurrentSong () throws SQLException{
-        Member member = memberDAO.readItem(idMember);
         Song currentSong = queueManager.getCurrentSong();
         if (currentSong == null) {
             System.out.println("No song found");
@@ -60,10 +59,55 @@ public class ManagementAppMusicService extends ManagementMusicDAOImplementation 
         isPlaying = true;
         elapsedTime = 0;
 
-        // Save History
-        saveSongToHistory(LocalDateTime.now(), currentSong.getIdSong(), member.getIdUser());
+        if (idMember != null) {
+            Member member = memberDAO.readItem(idMember);
+            saveSongToHistory(LocalDateTime.now(), currentSong.getIdSong(), member.getIdUser());
+
+        }
 
         System.out.println("Playing song -" + currentSong.getTitleSong());
+
+        startPlaybackThread(currentSong);
+    }
+
+    public void nextSong () throws SQLException{
+        stopCurrentThread();
+        queueManager.nextSong();
+        playCurrentSong();
+    }
+
+    public void previousSong () throws SQLException{
+        stopCurrentThread();
+        queueManager.previousSong();
+        playCurrentSong();
+    }
+
+    public void pauseSong (Song song) {
+        if (isPlaying && !isPaused) {
+            isPaused = true;
+            isPlaying = false;
+            System.out.println(song.getTitleSong() + " was paused at " + elapsedTime + " seconds...\n");
+        }
+    }
+
+    public void resumeSong () throws SQLException {
+        if (isPaused && !isPlaying) {
+            isPaused = false;
+            isPlaying = true;
+
+
+            // if Thread not is running
+            Song currentSong = queueManager.getCurrentSong();
+            if (currentSong == null) {
+                System.out.println("No song to resume");
+                return;
+            }
+
+            startPlaybackThread(currentSong);
+        }
+    }
+
+    private void startPlaybackThread(Song currentSong) {
         timeThread = new Thread(() -> {
             while (isPlaying && elapsedTime < currentSong.getDuration()) {
                 if (!isPaused) {
@@ -89,30 +133,6 @@ public class ManagementAppMusicService extends ManagementMusicDAOImplementation 
         timeThread.start();
     }
 
-    public void nextSong () throws SQLException{
-        stopCurrentThread();
-        queueManager.nextSong();
-        playCurrentSong();
-    }
-
-    public void previousSong () throws SQLException{
-        stopCurrentThread();
-        queueManager.previousSong();
-        playCurrentSong();
-    }
-
-    public void pauseSong (Song song) {
-        isPaused = true;
-        System.out.println(song.getTitleSong() + " was paused at " + elapsedTime + " seconds...\n");
-    }
-
-    public void resumeSong () throws SQLException {
-        if (isPaused && !isPlaying) {
-            isPaused = false;
-            playCurrentSong();
-        }
-    }
-
     private void stopCurrentThread() {
         isPlaying = false;
         isPaused = false;
@@ -121,49 +141,48 @@ public class ManagementAppMusicService extends ManagementMusicDAOImplementation 
         }
     }
 
-    public void findSongByTitle (String title) throws SQLException{
+    public List<Song> findSongByTitle (String title) throws SQLException{
         List<Song> songs = searchSongByTitle(title);
         if (songs == null || songs.isEmpty()) {
             System.out.println("Not found Songs with title " + title);
-            return;
+            return null;
         }
-        songs.forEach(System.out::println);
+        return songs;
     }
 
-    public void findSongByGenre (String genre) throws SQLException{
+    public List<Song> findSongByGenre (String genre) throws SQLException{
         List<Song> songs = searchSongByGenre(genre);
         if (songs == null || songs.isEmpty()) {
             System.out.println("Not found Songs with genre " + genre);
-            return;
+            return null;
         }
-        songs.forEach(System.out::println);
+        return songs;
     }
 
-    public void findSongByAlbum (String album) throws SQLException{
+    public List<Song> findSongByAlbum (String album) throws SQLException{
         List<Song> songs = searchSongByAlbum(album);
         if (songs == null || songs.isEmpty()) {
             System.out.println("Not found Songs with album " + album);
-            return;
+            return null;
         }
-        songs.forEach(System.out::println);
+        return songs;
     }
 
-    public void findSongByArtist (String artist) throws SQLException{
+    public List<Song> findSongByArtist (String artist) throws SQLException{
         List<Song> songs = searchSongByArtist(artist);
         if (songs == null || songs.isEmpty()) {
             System.out.println("Not found Songs with Artist " + artist);
-            return;
+            return null;
         }
-        songs.forEach(System.out::println);
+        return songs;
     }
 
-    public void findSongByYear (String year) throws SQLException{
+    public List<Song> findSongByYear (String year) throws SQLException{
         List<Song> songs = searchSongByYear(year);
         if (songs == null || songs.isEmpty()) {
             System.out.println("Not found Songs with Year " + year);
-            return;
+            return null;
         }
-        songs.forEach(System.out::println);
+        return songs;
     }
-
 }

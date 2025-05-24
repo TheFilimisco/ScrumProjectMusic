@@ -1,8 +1,5 @@
 package ui;
 
-import models.dao.SongDAOImplementation;
-import models.dao.interfaces.GenericDAO;
-import models.song.Song;
 
 import java.util.Scanner;
 

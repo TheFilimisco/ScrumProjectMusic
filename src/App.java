@@ -1,5 +1,6 @@
 import app.controller.AppMusicController;
 import auth.controller.AuthController;
+import models.song.Song;
 import models.user.Member;
 import profile.controller.ProfileController;
 import ui.AppView;
@@ -8,11 +9,12 @@ import ui.ProfileView;
 import ui.ViewAuth;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    private final Scanner sc = new Scanner(System.in);
 
+    private final Scanner sc = new Scanner(System.in);
     private final AppMusicController appMusicController = new AppMusicController();
     private final AuthController authController = new AuthController();
     private final ProfileController profileController = new ProfileController();
@@ -27,7 +29,7 @@ public class App {
         app.mainLevel();
     }
 
-    private void mainLevel() throws SQLException {
+    public void mainLevel() throws SQLException {
         boolean running = true;
         while(running){
             menu.auth();
@@ -52,7 +54,6 @@ public class App {
         }
     }
 
-
     private void secondLevel(Integer idMember) throws SQLException {
         boolean running = true;
         while(running){
@@ -68,22 +69,51 @@ public class App {
                     break;
                 }
                 case "2":{
-                    appMusicController.findSongByTitle(appView.searchByTitle());
+                    List<Song> songsFounded = appMusicController.findSongByTitle(appView.searchByTitle());
+                    if (songsFounded!=null) {
+                        songsFounded.forEach(System.out::println);
+                        songLevel(songsFounded.getFirst(),idMember);
+                        return;
+                    }
                     break;
                 }
                 case "3":{
-                    appMusicController.findSongByTitle(appView.searchByGenre());
+                    List<Song> songsFounded = appMusicController.findSongByArtist(appView.searchByArtist());
+                    if (songsFounded!=null) {
+                        songsFounded.forEach(System.out::println);
+                        songLevel(songsFounded.getFirst(),idMember);
+                        return;
+                    }
                     break;
                 }
                 case "4":{
-                    appMusicController.findSongByTitle(appView.searchByArtist());
+                    List<Song> songsFounded = appMusicController.findSongByAlbum(appView.searchByAlbum());
+                    if (songsFounded!=null) {
+                        songsFounded.forEach(System.out::println);
+                        songLevel(songsFounded.getFirst(),idMember);
+                        return;
+                    }
                     break;
                 }
                 case "5":{
-                    appMusicController.findSongByYear(appView.searchByYear());
+                    List<Song> songsFounded = appMusicController.findSongByGenre(appView.searchByGenre());
+                    if (songsFounded!=null) {
+                        songsFounded.forEach(System.out::println);
+                        songLevel(songsFounded.getFirst(),idMember);
+                        return;
+                    }
                     break;
                 }
-                case "6": {
+                case "6":{
+                    List<Song> songsFounded = appMusicController.findSongByYear(appView.searchByYear());
+                    if (songsFounded!=null) {
+                        songsFounded.forEach(System.out::println);
+                        songLevel(songsFounded.getFirst(),idMember);
+                        return;
+                    }
+                    break;
+                }
+                case "7": {
                     running = false;
                     break;
                 }
@@ -92,7 +122,6 @@ public class App {
             }
         }
     }
-
 
     private void profileLevel(Member member) throws SQLException {
         boolean running = true;
@@ -119,6 +148,44 @@ public class App {
                 }
                 case "5":{
                     running = false;
+                    break;
+                }
+                default:
+                    System.out.println("Invalid option");
+            }
+        }
+    }
+
+    private void songLevel(Song song, Integer idMember) throws SQLException {
+        boolean running = true;
+        while (running){
+            menu.mediaPlayer();
+            System.out.println("Select your choice: ");
+            String option = sc.nextLine();
+            switch (option){
+                case "1":{
+                    appMusicController.playSong(song,idMember);
+                    break;
+                }
+                case "2":{
+                    appMusicController.pauseSong(song);
+                    break;
+                }
+                case "3":{
+                    appMusicController.resumeSong();
+                    break;
+                }
+                case "4":{
+                    appMusicController.nextSong();
+                    break;
+                }
+                case "5":{
+                    appMusicController.previousSong();
+                    break;
+                }
+                case "6":{
+                    running = false;
+                    break;
                 }
                 default:
                     System.out.println("Invalid option");

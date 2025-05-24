@@ -5,6 +5,7 @@ import models.song.Song;
 import models.user.Member;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AppMusicController {
     private final ManagementAppMusicService appMusicService;
@@ -13,15 +14,17 @@ public class AppMusicController {
         this.appMusicService = new ManagementAppMusicService();
     }
 
-    public void playSong(Song song) throws SQLException {
+
+    public void playSong(Song song, Integer idMember) throws SQLException {
+        appMusicService.setIdMember(idMember);
         appMusicService.playSong(song);
     }
 
-    public void pauseSong(Member member, Song song) throws SQLException {
+    public void pauseSong(Song song) throws SQLException {
         appMusicService.pauseSong(song);
     }
 
-    public void stopSong() throws SQLException {
+    public void resumeSong() throws SQLException {
         appMusicService.resumeSong();
     }
 
@@ -33,23 +36,23 @@ public class AppMusicController {
         appMusicService.previousSong();
     }
 
-    public void findSongByTitle(String title) throws SQLException {
-        appMusicService.findSongByTitle(title);
+    public List<Song> findSongByTitle(String title) throws SQLException {
+        return appMusicService.findSongByTitle(title);
     }
 
-    public void findSongByGenre(String genre) throws SQLException {
-        appMusicService.findSongByGenre(genre);
+    public List<Song> findSongByGenre(String genre) throws SQLException {
+        return appMusicService.findSongByGenre(genre);
     }
 
-    public void findSongByAlbum(String album) throws SQLException {
-        appMusicService.findSongByAlbum(album);
+    public List<Song> findSongByAlbum(String album) throws SQLException {
+        return appMusicService.findSongByAlbum(album);
     }
 
-    public void findSongByArtist(String artist) throws SQLException {
-        appMusicService.findSongByArtist(artist);
+    public List<Song> findSongByArtist(String artist) throws SQLException {
+        return appMusicService.findSongByArtist(artist);
     }
 
-    public void findSongByYear(String year) throws SQLException {
-        appMusicService.findSongByYear(year);
+    public List<Song> findSongByYear(String year) throws SQLException {
+        return appMusicService.findSongByYear(year);
     }
 }
