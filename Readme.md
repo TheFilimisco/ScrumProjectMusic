@@ -7,7 +7,6 @@ Additionally, data science techniques will be applied to analyze patterns in use
 ### Features
 
 ### 1. Authentication
-![Auth](img/auth.jpg)
 
 #### Auth
 
@@ -27,8 +26,6 @@ Additionally, data science techniques will be applied to analyze patterns in use
 
 
 ### 2. Manager
-![Manager](img/manager.jpg)
-
 #### AdminManager
 
 | Feature       | Description    | Status | Developer |
@@ -71,7 +68,6 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | Show Favorite Genres  | Provides a list of all your listened genres ordered by the amount of plays  | Done | Theo   | 
 
 ### 3. Songs
-![Songs](img/songs.jpg)
 
 #### Song
 
@@ -79,8 +75,7 @@ Additionally, data science techniques will be applied to analyze patterns in use
 |-------------------|-------------------------------------|--------|---------------|
 | Song Class        | To Make Class Song with composition | Done   | Steven & Theo |
 
-### 4. DATA
-![Data](img/data.jpg)
+### 4. Data
 
 #### Data
 
@@ -89,7 +84,14 @@ Additionally, data science techniques will be applied to analyze patterns in use
 | Data Class | generate instance DataSongs | Done   | Steven & Julia | 
 
 
+#### Persistence
+Data persistence has been achieved using the DAO pattern in conjunction with JDBC, which allows us to make all CRUD operations final, thus modifying our .db file with every operation made.
+
+
+### Full Diagram
+![Full_Final_Diagram.png](img/Full_Final_Diagram.png)
+
 ### Documentation
-+ [Class Diagram Project Music Recommender System](https://drive.google.com/file/d/1EfPopsuNGfS590GFdUUheVOVDKjg46cd/view?usp=drive_link)
-+ [Scrum Planner](https://docs.google.com/spreadsheets/d/1rEBiQTtqf0slariM-Mr7hmkwMj8jV7SxucW3dnAYtes/edit?usp=sharing)
++ [Class Diagram Project Music Recommender System](https://drive.google.com/file/d/1MyUBq26KPAK9u_2woxgmZ2RzWKvhw6Um/view?usp=sharing)
++ [Scrum Planner](https://docs.google.com/spreadsheets/d/1gc2yvXXn4HAeMKqH-eTxVGBWNAgkBP_EXLDWSs1fjcQ/edit?usp=sharing)
 + [Scrum Report](https://docs.google.com/document/d/1i74uvANGPbzYQX3pflOqah5UxF3w0kFpW3wvfyKNrE0/edit?usp=sharing)
